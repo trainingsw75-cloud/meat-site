@@ -1,67 +1,540 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Прекрасное Мясо</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff}
-.hero{min-height:100vh;background:linear-gradient(135deg,#1a0000,#4a0000,#8B0000);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.hero h1{font-size:4rem;color:#FFD700;text-shadow:0 0 40px rgba(255,107,53,0.5)}
-.hero p{color:#ff9999;font-size:1.3rem;margin:1rem}
-.phone{font-size:2rem;color:#ff4444;margin:2rem}
-.services{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;padding:2rem}
-.tag{background:rgba(255,68,68,0.2);border:1px solid #ff4444;padding:1rem 2rem;border-radius:50px}
-.section{max-width:800px;margin:2rem auto;padding:2rem;background:rgba(0,0,0,0.3);border-radius:20px}
-.section h2{color:#FFD700;margin-bottom:1rem}
-.recipe{margin:1rem 0;padding:1rem;border-left:3px solid #ff4444}
-footer{text-align:center;padding:3rem;color:#666}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Прекрасное Мясо — Рецепты и Услуги шефа</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a0a;color:#fff;line-height:1.6}
+        
+        /* VPN ПРЕДУПРЕЖДЕНИЕ */
+        .vpn-alert{
+            background:linear-gradient(90deg,#ff4444,#ff6b35);
+            color:#fff;
+            text-align:center;
+            padding:1rem;
+            font-weight:bold;
+            font-size:1rem;
+            position:sticky;
+            top:0;
+            z-index:9999;
+            animation:vpn-pulse 2s infinite;
+        }
+        @keyframes vpn-pulse{
+            0%,100%{opacity:1}
+            50%{opacity:0.8}
+        }
+        .vpn-alert a{
+            color:#FFD700;
+            text-decoration:underline;
+        }
+        
+        /* ГЕРОЙ */
+        .hero{
+            min-height:80vh;
+            background:linear-gradient(135deg,#1a0000,#4a0000,#8B0000);
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:2rem
+        }
+        .hero h1{
+            font-size:clamp(2.5rem,8vw,5rem);
+            color:#FFD700;
+            text-shadow:0 0 40px rgba(255,107,53,0.5);
+            margin-bottom:1rem
+        }
+        .hero p{color:#ff9999;font-size:1.3rem;margin:0.5rem}
+        .phone{
+            font-size:2rem;
+            color:#ff4444;
+            margin:1.5rem 0;
+            text-shadow:0 0 20px rgba(255,68,68,0.4);
+            font-weight:bold
+        }
+        
+        /* НАВИГАЦИЯ */
+        nav{
+            background:rgba(0,0,0,0.9);
+            padding:1rem;
+            display:flex;
+            justify-content:center;
+            gap:1.5rem;
+            flex-wrap:wrap;
+            border-bottom:1px solid #333;
+            position:sticky;
+            top:48px;
+            z-index:9998
+        }
+        nav a{
+            color:#FFD700;
+            text-decoration:none;
+            font-weight:bold;
+            text-transform:uppercase;
+            font-size:0.9rem;
+            transition:all 0.3s
+        }
+        nav a:hover{color:#ff4444}
+        
+        /* СЕКЦИИ */
+        section{
+            max-width:1000px;
+            margin:0 auto;
+            padding:3rem 1.5rem
+        }
+        .section-title{
+            font-size:2.2rem;
+            color:#FFD700;
+            text-align:center;
+            margin-bottom:2rem;
+            text-transform:uppercase
+        }
+        
+        /* ВИДЕО-КАРТОЧКИ */
+        .video-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:2rem
+        }
+        .video-card{
+            background:linear-gradient(145deg,#1a1a1a,#2a0000);
+            border-radius:15px;
+            overflow:hidden;
+            border:1px solid #ff444433;
+            transition:all 0.3s
+        }
+        .video-card:hover{
+            transform:translateY(-5px);
+            border-color:#ff4444;
+            box-shadow:0 15px 40px rgba(255,68,68,0.2)
+        }
+        .video-wrap{
+            position:relative;
+            padding-bottom:56.25%;
+            height:0;
+            background:#000
+        }
+        .video-wrap iframe{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            border:none
+        }
+        .video-info{padding:1.5rem}
+        .video-info h3{
+            color:#FFD700;
+            font-size:1.2rem;
+            margin-bottom:0.5rem
+        }
+        .video-info .author{
+            color:#ff6666;
+            font-size:0.9rem;
+            margin-bottom:0.5rem
+        }
+        .video-info .stars{color:#FFD700}
+        .video-info .tips{
+            margin-top:1rem;
+            padding:1rem;
+            background:rgba(255,68,68,0.1);
+            border-radius:10px;
+            border-left:3px solid #ff4444
+        }
+        .video-info .tips strong{color:#FFD700}
+        .video-info .tips ul{
+            margin-top:0.5rem;
+            padding-left:1.5rem;
+            color:#ccc
+        }
+        .video-info .tips li{margin:0.3rem 0}
+        
+        /* VPN-БЛОК */
+        .vpn-block{
+            background:rgba(255,68,68,0.1);
+            border:1px solid #ff4444;
+            border-radius:10px;
+            padding:1rem;
+            margin-top:1rem;
+            text-align:center
+        }
+        .vpn-block .vpn-icon{font-size:2rem}
+        .vpn-block p{color:#ff9999;font-size:0.9rem}
+        .vpn-block .vpn-name{
+            color:#FFD700;
+            font-weight:bold;
+            font-size:1.1rem
+        }
+        
+        /* РЕЦЕПТЫ */
+        .recipe-card{
+            background:linear-gradient(180deg,#151515,#0a0a0a);
+            border-radius:15px;
+            padding:2rem;
+            margin:1.5rem 0;
+            border:1px solid #333;
+            border-left:4px solid #ff4444
+        }
+        .recipe-card h3{
+            color:#FFD700;
+            font-size:1.4rem;
+            margin-bottom:1rem
+        }
+        .recipe-card .meta{
+            display:flex;
+            gap:1rem;
+            color:#888;
+            font-size:0.9rem;
+            margin-bottom:1rem;
+            flex-wrap:wrap
+        }
+        .recipe-card p{color:#ccc;line-height:1.8}
+        
+        /* ШЕФ */
+        .chef-section{
+            background:linear-gradient(135deg,#1a0000,#0d0000);
+            border-radius:20px;
+            padding:3rem 2rem;
+            text-align:center;
+            border:2px solid #ff444433
+        }
+        .chef-avatar{
+            width:120px;
+            height:120px;
+            background:linear-gradient(135deg,#ff4444,#FFD700);
+            border-radius:50%;
+            margin:0 auto 1.5rem;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:3rem;
+            border:4px solid #FFD700
+        }
+        .chef-section h2{color:#FFD700;font-size:2rem;margin-bottom:1rem}
+        .chef-section .desc{
+            color:#ccc;
+            max-width:600px;
+            margin:0 auto 1.5rem
+        }
+        .services{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:0.8rem;
+            margin-top:2rem
+        }
+        .service-tag{
+            background:rgba(255,68,68,0.2);
+            border:1px solid #ff4444;
+            padding:0.8rem 1.5rem;
+            border-radius:50px;
+            font-weight:bold;
+            transition:all 0.3s
+        }
+        .service-tag:hover{
+            background:#ff4444;
+            transform:scale(1.05)
+        }
+        
+        /* РЕСТОРАНЫ */
+        .rest-card{
+            background:#111;
+            border-radius:15px;
+            padding:2rem;
+            margin:1rem 0;
+            border:1px solid #222
+        }
+        .rest-card h3{color:#FFD700;font-size:1.3rem}
+        .rest-card .loc{color:#ff6666;font-size:0.9rem;margin:0.5rem 0}
+        .rest-card p{color:#aaa}
+        
+        /* ФУТЕР */
+        footer{
+            text-align:center;
+            padding:3rem;
+            background:#000;
+            border-top:1px solid #222
+        }
+        footer .fire{font-size:2rem;animation:fire 1.5s infinite}
+        @keyframes fire{
+            0%,100%{opacity:1;transform:scale(1)}
+            50%{opacity:0.7;transform:scale(1.1)}
+        }
+        footer p{color:#555;margin-top:1rem}
+        footer .phone-footer{color:#ff4444;font-size:1.3rem;font-weight:bold}
+        
+        /* АДАПТИВ */
+        @media(max-width:600px){
+            .hero h1{font-size:2rem}
+            .phone{font-size:1.5rem}
+            nav{gap:0.8rem}
+            nav a{font-size:0.8rem}
+            .section-title{font-size:1.6rem}
+        }
+    </style>
 </head>
 <body>
-<div class="hero">
-<h1>🔥 Прекрасное Мясо 🔥</h1>
-<p>Мясные шедевры на вашем столе</p>
-<div class="phone">📞 +7 981 931-24-82</div>
-<p>Приеду и приготовлю! Договоримся о цене.</p>
-</div>
-<div class="services">
-<div class="tag">🥩 Стейки</div>
-<div class="tag">🔥 Шашлык</div>
-<div class="tag">🍖 BBQ</div>
-<div class="tag">🥗 Гарниры</div>
-<div class="tag">🎉 Банкеты</div>
-<div class="tag">🏠 На выезд</div>
-</div>
-<div class="section">
-<h2>👨‍🍳 О шефе</h2>
-<p>Более 10 лет опыта приготовления мяса. Работал на судах и в лучших ресторанах. Умею готовить вкусно везде!</p>
-</div>
-<div class="section">
-<h2>📖 Рецепты</h2>
-<div class="recipe">
-<h3>Стейк Рибай Medium Rare</h3>
-<p>Мраморная говядина, соль, перец, розмарин. Разогреть сковороду до дыма. 3 минуты с каждой стороны. Отдых 5 минут.</p>
-</div>
-<div class="recipe">
-<h3>Шашлык по-кавказски</h3>
-<p>Баранина (шея), лук, вино, специи. Мариновать 3 часа. Жарить на углях 7-10 минут.</p>
-</div>
-<div class="recipe">
-<h3>Свиные рёбра BBQ</h3>
-<p>Маринад: соевый соус, мёд, чеснок. Запекать 2.5 часа при 120°C. Глазировать последние 20 минут.</p>
-</div>
-</div>
-<div class="section">
-<h2>⭐ Лучшие рестораны</h2>
-<p><strong>Nusr-Et</strong> — Salt Bae, фирменная нарезка</p>
-<p><strong>Gordon Ramsay Steak</strong> — Биф Веллингтон</p>
-<p><strong>Fogo de Chão</strong> — бразильский BBQ</p>
-</div>
-<<footer>
-<p>🔥 Прекрасное Мясо © 2026 🔥</p>
-<p style="color:#ff4444">+7 981 931-24-82</p>
-</footer>
+
+    <!-- VPN АЛЕРТ -->
+    <div class="vpn-alert">
+        🔒 В России YouTube заблокирован — включите VPN (Happ VPN, ProtonVPN) для просмотра видео ↓
+    </div>
+
+    <!-- НАВИГАЦИЯ -->
+    <nav>
+        <a href="#video">🎬 Видео</a>
+        <a href="#recipes">📖 Рецепты</a>
+        <a href="#chef">👨‍🍳 Шеф</a>
+        <a href="#restaurants">⭐ Рестораны</a>
+    </nav>
+
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+        <h1>🔥 Прекрасное Мясо 🔥</h1>
+        <p>Мясные шедевры на вашем столе</p>
+        <div class="phone">📞 +7 981 931-24-82</div>
+        <p>Приеду и приготовлю! Договоримся о цене.</p>
+    </section>
+
+    <!-- ВИДЕО-РЕЦЕПТЫ (ТВОИ ССЫЛКИ) -->
+    <section id="video">
+        <h2 class="section-title">🎬 Видео-рецепты от лучших</h2>
+        
+        <div class="video-grid">
+            
+            <!-- ВИДЕО 1: Свинина/Шашлык — 3 ошибки -->
+            <div class="video-card">
+                <div class="video-wrap">
+                    <iframe src="https://www.youtube.com/embed/Qj4ezn_AL8E" 
+                            title="3 ошибки при жарке мяса" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>🐷 Свинина / Шашлык</h3>
+                    <p class="author">Канал: Гриль и BBQ ⭐⭐⭐⭐⭐</p>
+                    <p class="stars">⭐⭐⭐⭐⭐ 5/5</p>
+                    <div class="tips">
+                        <strong>🔥 Ключевые советы:</strong>
+                        <ul>
+                            <li><strong>3 ошибки при жарке:</strong> не переворачивать часто, не давить на мясо, не резать сразу</li>
+                            <li><strong>Маринад:</strong> лук + соль + специи (минимум 2 часа)</li>
+                            <li><strong>Угли:</strong> должны быть <strong>слабыми</strong>, не яркими</li>
+                            <li><strong>Температура:</strong> 64-65°C внутри — финальная стадия готовности</li>
+                            <li>Дать мясу отдохнуть 5-10 минут после жарки</li>
+                        </ul>
+                    </div>
+                    <div class="vpn-block">
+                        <div class="vpn-icon">🛡️</div>
+                        <p class="vpn-name">Happ VPN</p>
+                        <p>Рекомендую для просмотра видео в России</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВИДЕО 2: Баранина (Shorts) -->
+            <div class="video-card">
+                <div class="video-wrap">
+                    <iframe src="https://www.youtube.com/embed/5rEI3Pqx0w4" 
+                            title="Баранина рецепт" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>🐑 Баранина</h3>
+                    <p class="author">YouTube Shorts ⭐⭐⭐⭐</p>
+                    <p class="stars">⭐⭐⭐⭐ 4/5</p>
+                    <div class="tips">
+                        <strong>🔥 Ключевые советы:</strong>
+                        <ul>
+                            <li>Шея или корейка — лучшие части для жарки</li>
+                            <li>Маринад с зирой и кориандром</li>
+                            <li>Жарить на слабом огне 15-20 минут</li>
+                            <li>Подавать с лавашем и луком</li>
+                        </ul>
+                    </div>
+                    <div class="vpn-block">
+                        <div class="vpn-icon">🛡️</div>
+                        <p class="vpn-name">Happ VPN</p>
+                        <p>Рекомендую для просмотра видео в России</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВИДЕО 3: Говядина — Шеф Сталин -->
+            <div class="video-card">
+                <div class="video-wrap">
+                    <iframe src="https://www.youtube.com/embed/BiCp3wZXw7Q" 
+                            title="Говядина от Шефа Сталина" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-info">
+                    <h3>🥩 Говядина</h3>
+                    <p class="author">Шеф Сталин ⭐⭐⭐⭐⭐</p>
+                    <p class="stars">⭐⭐⭐⭐⭐ 5/5</p>
+                    <div class="tips">
+                        <strong>🔥 Ключевые советы:</strong>
+                        <ul>
+                            <li>Выбирать мраморную говядину</li>
+                            <li>Достать из холодильника за 1 час до готовки</li>
+                            <li>Посолить за 40 минут до жарки</li>
+                            <li>Сковорода — чугун, раскалена до дыма</li>
+                            <li>Масло сливочное + чеснок + тимьян</li>
+                            <li>Отдых 5-7 минут под фольгой после жарки</li>
+                        </ul>
+                    </div>
+                    <div class="vpn-block">
+                        <div class="vpn-icon">🛡️</div>
+                        <p class="vpn-name">Happ VPN</p>
+                        <p>Рекомендую для просмотра видео в России</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- РЕЦЕПТЫ -->
+    <section id="recipes">
+        <h2 class="section-title">📖 Рецепты от шефа</h2>
+        
+        <div class="recipe-card">
+            <h3>🥩 Стейк Рибай Medium Rare</h3>
+            <div class="meta">
+                <span>⏱ 25 мин</span>
+                <span>🔥 Высокая</span>
+                <span>🥩 Говядина</span>
+            </div>
+            <p>
+                <strong>Ингредиенты:</strong> Стейк 400г (2.5 см), соль, перец, розмарин, сливочное масло 30г, чеснок 3 зубчика.<br><br>
+                <strong>Пошагово:</strong><br>
+                1. Достать мясо из холодильника за 1 час<br>
+                2. Посолить за 40 минут до жарки<br>
+                3. Разогреть чугунную сковороду до дыма<br>
+                4. Жарить 3 минуты с каждой стороны<br>
+                5. Добавить масло, чеснок, розмарин — поливать 2 минуты<br>
+                6. Отдых 5-7 минут под фольгой<br>
+                <strong>Готово!</strong> Внутри розовый, соки сохранены.
+            </p>
+        </div>
+
+        <div class="recipe-card">
+            <h3>🔥 Шашлык из баранины</h3>
+            <div class="meta">
+                <span>⏱ 4 часа</span>
+                <span>🔥 Уголь</span>
+                <span>🥩 Баранина</span>
+            </div>
+            <p>
+                <strong>Ингредиенты:</strong> Баранина (шея) 1.5кг, лук 3шт, сухое вино 200мл, зира, кориандр, соль, перец.<br><br>
+                <strong>Пошагово:</strong><br>
+                1. Нарезать мясо кусками 3-4 см<br>
+                2. Лук полукольцами, размять руками<br>
+                3. Смешать мясо, лук, вино, специи<br>
+                4. Мариновать 3 часа в холодильнике<br>
+                5. Угли до побеления, жарить 7-10 минут<br>
+                6. <strong>Угли должны быть слабыми!</strong> 64-65°C внутри — готово<br>
+                <strong>Подавать с лавашем и луком!</strong>
+            </p>
+        </div>
+
+        <div class="recipe-card">
+            <h3>🐷 Свиные рёбра BBQ</h3>
+            <div class="meta">
+                <span>⏱ 3 часа</span>
+                <span>🔥 Низкая</span>
+                <span>🥩 Свинина</span>
+            </div>
+            <p>
+                <strong>Ингредиенты:</strong> Рёбра 1.5кг, соевый соус 100мл, мёд 3ст.л., чеснок 5 зубчиков, имбирь, паприка, BBQ соус.<br><br>
+                <strong>Пошагово:</strong><br>
+                1. Снять плёнку с внутренней стороны<br>
+                2. Маринад: соевый + мёд + чеснок + имбирь + паприка<br>
+                3. Завернуть в фольгу, запекать 2.5 часа при 120°C<br>
+                4. Снять фольгу, смазать BBQ соусом<br>
+                5. Запекать ещё 20 минут при 180°C<br>
+                <strong>Подавать с кукурузой!</strong>
+            </p>
+        </div>
+
+        <div class="recipe-card">
+            <h3>🥗 Картофель по-деревенски</h3>
+            <div class="meta">
+                <span>⏱ 40 мин</span>
+                <span>🔥 Средняя</span>
+                <span>🥔 Гарнир</span>
+            </div>
+            <p>
+                <strong>Ингредиенты:</strong> Молодой картофель 800г, чеснок 4 зубчика, розмарин, оливковое масло, паприка.<br><br>
+                <strong>Пошагово:</strong><br>
+                1. Картофель с кожурой, разрезать на 4 части<br>
+                2. Смешать масло, паприку, соль, перец<br>
+                3. Выложить на противень, добавить чеснок и розмарин<br>
+                4. Запекать 35 минут при 200°C<br>
+                <strong>Хрустящая корочка готова!</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ШЕФ -->
+    <section id="chef">
+        <div class="chef-section">
+            <div class="chef-avatar">👨‍🍳</div>
+            <h2>Шеф на выезд</h2>
+            <p class="desc">
+                Более 10 лет опыта приготовления мяса. Работал на судах и в полевых условиях — 
+                умею готовить вкусно везде, где есть огонь и мясо! Приеду к вам домой, на дачу, на корпоратив.
+            </p>
+            <div class="phone">📞 +7 981 931-24-82</div>
+            <p style="color:#ff9999;margin-top:0.5rem">Звоните — договоримся о стоимости!</p>
+            
+            <div class="services">
+                <div class="service-tag">🔥 Шашлык</div>
+                <div class="service-tag">🥩 Стейки</div>
+                <div class="service-tag">🍖 BBQ</div>
+                <div class="service-tag">🥗 Гарниры</div>
+                <div class="service-tag">🎉 Банкеты</div>
+                <div class="service-tag">🏠 На выезд</div>
+                <div class="service-tag">🌲 Природа</div>
+                <div class="service-tag">🚗 Приеду сам</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РЕСТОРАНЫ -->
+    <section id="restaurants">
+        <h2 class="section-title">⭐ Лучшие рестораны мира</h2>
+        
+        <div class="rest-card">
+            <h3>Nusr-Et <span style="color:#FFD700">⭐⭐⭐⭐⭐</span></h3>
+            <p class="loc">📍 Стамбул • Дубай • Нью-Йорк</p>
+            <p>Знаменитый Salt Bae. Фирменная театральная подача мяса. Рибай и Томагавк — must try!</p>
+        </div>
+        
+        <div class="rest-card">
+            <h3>Gordon Ramsay Steak <span style="color:#FFD700">⭐⭐⭐⭐⭐</span></h3>
+            <p class="loc">📍 Лас-Вегас • Лондон</p>
+            <p>Биф Веллингтон — легенда. Идеальная прожарка и бесподобные соусы.</p>
+        </div>
+        
+        <div class="rest-card">
+            <h3>Fogo de Chão <span style="color:#FFD700">⭐⭐⭐⭐⭐</span></h3>
+            <p class="loc">📍 Бразилия • США</p>
+            <p>Шведский стол по-бразильски. Пиканья, ломбардо — нарезают прямо у стола!</p>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer>
+        <span class="fire">🔥</span>
+        <p>Прекрасное Мясо © 2026 — Готовим с душой и огнём</p>
+        <p class="phone-footer">+7 981 931-24-82</p>
+    </footer>
+
 </body>
 </html>
