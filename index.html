@@ -1,947 +1,321 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 ПРЕКРАСНОЕ МЯСО 🔥</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Mono+One&family=Noto+Sans:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --acid-yellow:#CCFF00;
-            --electric-blue:#00F0FF;
-            --candy-pink:#FF00CC;
-            --juicy-orange:#FF6B00;
-            --neon-red:#FF0040;
-            --hot-purple:#BD00FF;
-            --lime:#39FF14;
-        }
-        
-        *{margin:0;padding:0;box-sizing:border-box}
-        
-        body{
-            font-family:'Noto Sans',sans-serif;
-            background:#0a0a0a;
-            color:#fff;
-            overflow-x:hidden;
-            cursor:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🔥</text></svg>'),auto;
-        }
-        
-        /* ===== GLITCH HERO ===== */
-        .hero{
-            min-height:100vh;
-            background:linear-gradient(135deg,#000 0%,#1a0033 25%,#330011 50%,#001a33 75%,#000 100%);
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            position:relative;
-            overflow:hidden;
-        }
-        
-        .hero::before{
-            content:'';
-            position:absolute;
-            top:0;left:0;right:0;bottom:0;
-            background:
-                radial-gradient(circle at 20% 50%,var(--acid-yellow) 0%,transparent 50%),
-                radial-gradient(circle at 80% 50%,var(--electric-blue) 0%,transparent 50%),
-                radial-gradient(circle at 50% 80%,var(--candy-pink) 0%,transparent 50%);
-            opacity:0.15;
-            animation:bg-shift 8s ease-in-out infinite;
-        }
-        
-        @keyframes bg-shift{
-            0%,100%{transform:scale(1) rotate(0deg)}
-            33%{transform:scale(1.2) rotate(5deg)}
-            66%{transform:scale(1.1) rotate(-5deg)}
-        }
-        
-        .glitch-wrapper{
-            position:relative;
-            z-index:1;
-        }
-        
-        .glitch{
-            font-family:'Rubik Mono One',sans-serif;
-            font-size:clamp(2.5rem,10vw,7rem);
-            text-transform:uppercase;
-            letter-spacing:0.05em;
-            color:var(--acid-yellow);
-            text-shadow:
-                0.05em 0 0 var(--electric-blue),
-                -0.05em -0.025em 0 var(--candy-pink),
-                -0.025em 0.05em 0 var(--juicy-orange);
-            animation:glitch 2s infinite;
-            position:relative;
-        }
-        
-        @keyframes glitch{
-            0%{text-shadow:0.05em 0 0 var(--electric-blue),-0.05em -0.025em 0 var(--candy-pink),-0.025em 0.05em 0 var(--juicy-orange)}
-            14%{text-shadow:0.05em 0 0 var(--electric-blue),-0.05em -0.025em 0 var(--candy-pink),-0.025em 0.05em 0 var(--juicy-orange)}
-            15%{text-shadow:-0.05em -0.025em 0 var(--electric-blue),0.025em 0.025em 0 var(--candy-pink),-0.05em -0.05em 0 var(--juicy-orange)}
-            49%{text-shadow:-0.05em -0.025em 0 var(--electric-blue),0.025em 0.025em 0 var(--candy-pink),-0.05em -0.05em 0 var(--juicy-orange)}
-            50%{text-shadow:0.025em 0.05em 0 var(--electric-blue),0.05em 0 0 var(--candy-pink),0 -0.05em 0 var(--juicy-orange)}
-            99%{text-shadow:0.025em 0.05em 0 var(--electric-blue),0.05em 0 0 var(--candy-pink),0 -0.05em 0 var(--juicy-orange)}
-            100%{text-shadow:-0.025em 0 0 var(--electric-blue),-0.025em -0.025em 0 var(--candy-pink),-0.025em -0.05em 0 var(--juicy-orange)}
-        }
-        
-        .hero-sub{
-            font-family:'Press Start 2P',cursive;
-            font-size:clamp(0.6rem,2vw,1rem);
-            color:var(--electric-blue);
-            margin-top:2rem;
-            text-shadow:0 0 20px var(--electric-blue);
-            animation:flicker 3s infinite;
-        }
-        
-        @keyframes flicker{
-            0%,100%{opacity:1}
-            50%{opacity:0.7}
-            52%{opacity:0.3}
-            54%{opacity:1}
-        }
-        
-        .hero-fire{
-            font-size:5rem;
-            margin:1rem 0;
-            animation:bounce-fire 1s infinite;
-            display:inline-block;
-        }
-        
-        @keyframes bounce-fire{
-            0%,100%{transform:translateY(0) scale(1)}
-            50%{transform:translateY(-20px) scale(1.2)}
-        }
-        
-        .phone-hero{
-            font-family:'Rubik Mono One',sans-serif;
-            font-size:clamp(1.2rem,4vw,2rem);
-            color:var(--neon-red);
-            text-shadow:0 0 30px var(--neon-red),0 0 60px var(--candy-pink);
-            margin:1.5rem 0;
-            animation:pulse-phone 2s infinite;
-            background:linear-gradient(90deg,var(--neon-red),var(--candy-pink),var(--neon-red));
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            background-size:200% 100%;
-        }
-        
-        @keyframes pulse-phone{
-            0%,100%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-        }
-        
-        /* ===== FLOATING STICKERS ===== */
-        .sticker{
-            position:fixed;
-            font-size:2rem;
-            z-index:9999;
-            pointer-events:none;
-            animation:float-sticker 6s ease-in-out infinite;
-            opacity:0.6;
-        }
-        
-        .sticker:nth-child(1){top:10%;left:5%;animation-delay:0s}
-        .sticker:nth-child(2){top:20%;right:8%;animation-delay:1s}
-        .sticker:nth-child(3){top:60%;left:3%;animation-delay:2s}
-        .sticker:nth-child(4){top:70%;right:5%;animation-delay:3s}
-        .sticker:nth-child(5){top:40%;left:90%;animation-delay:4s}
-        
-        @keyframes float-sticker{
-            0%,100%{transform:translateY(0) rotate(0deg)}
-            25%{transform:translateY(-30px) rotate(10deg)}
-            50%{transform:translateY(0) rotate(-5deg)}
-            75%{transform:translateY(-15px) rotate(5deg)}
-        }
-        
-        /* ===== MARQUEE ===== */
-        .marquee{
-            background:linear-gradient(90deg,var(--acid-yellow),var(--lime));
-            color:#000;
-            padding:0.8rem 0;
-            overflow:hidden;
-            white-space:nowrap;
-            font-family:'Press Start 2P',cursive;
-            font-size:0.8rem;
-            text-transform:uppercase;
-        }
-        
-        .marquee span{
-            display:inline-block;
-            animation:marquee-scroll 10s linear infinite;
-            padding-left:100%;
-        }
-        
-        @keyframes marquee-scroll{
-            0%{transform:translateX(0)}
-            100%{transform:translateX(-100%)}
-        }
-        
-        /* ===== NAV ===== */
-        nav{
-            background:rgba(0,0,0,0.9);
-            backdrop-filter:blur(20px);
-            padding:1rem;
-            display:flex;
-            justify-content:center;
-            gap:1rem;
-            flex-wrap:wrap;
-            position:sticky;
-            top:0;
-            z-index:1000;
-            border-bottom:2px solid var(--acid-yellow);
-        }
-        
-        .nav-btn{
-            font-family:'Press Start 2P',cursive;
-            font-size:0.7rem;
-            padding:0.8rem 1.5rem;
-            background:linear-gradient(145deg,#1a1a1a,#2a2a2a);
-            border:2px solid var(--electric-blue);
-            color:var(--electric-blue);
-            text-decoration:none;
-            border-radius:10px;
-            transition:all 0.3s;
-            text-transform:uppercase;
-            box-shadow:0 0 10px var(--electric-blue);
-        }
-        
-        .nav-btn:hover{
-            transform:translateY(-5px) scale(1.1);
-            background:var(--electric-blue);
-            color:#000;
-            box-shadow:0 0 30px var(--electric-blue),0 0 60px var(--candy-pink);
-            border-color:var(--candy-pink);
-        }
-        
-        /* ===== SECTIONS ===== */
-        section{
-            max-width:1200px;
-            margin:0 auto;
-            padding:4rem 1.5rem;
-        }
-        
-        .section-title{
-            font-family:'Rubik Mono One',sans-serif;
-            font-size:clamp(1.5rem,5vw,2.5rem);
-            text-align:center;
-            margin-bottom:3rem;
-            text-transform:uppercase;
-            position:relative;
-            display:inline-block;
-            width:100%;
-        }
-        
-        .section-title::after{
-            content:'';
-            display:block;
-            width:200px;
-            height:4px;
-            background:linear-gradient(90deg,var(--acid-yellow),var(--electric-blue),var(--candy-pink));
-            margin:1rem auto;
-            border-radius:2px;
-            animation:line-grow 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes line-grow{
-            0%{width:100px}
-            100%{width:300px}
-        }
-        
-        /* ===== VIDEO CARDS ===== */
-        .video-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:2rem;
-        }
-        
-        .video-card{
-            background:linear-gradient(145deg,#111,#1a001a);
-            border-radius:20px;
-            overflow:hidden;
-            border:3px solid transparent;
-            transition:all 0.4s;
-            position:relative;
-        }
-        
-        .video-card::before{
-            content:'';
-            position:absolute;
-            top:-3px;left:-3px;right:-3px;bottom:-3px;
-            background:linear-gradient(45deg,var(--acid-yellow),var(--electric-blue),var(--candy-pink),var(--juicy-orange));
-            border-radius:23px;
-            z-index:-1;
-            opacity:0;
-            transition:opacity 0.4s;
-        }
-        
-        .video-card:hover::before{opacity:1}
-        
-        .video-card:hover{
-            transform:translateY(-15px) rotate(2deg);
-            box-shadow:0 30px 60px rgba(0,240,255,0.3);
-        }
-        
-        .video-wrap{
-            position:relative;
-            padding-bottom:56.25%;
-            height:0;
-            background:#000;
-        }
-        
-        .video-wrap iframe{
-            position:absolute;
-            top:0;left:0;
-            width:100%;
-            height:100%;
-            border:none;
-        }
-        
-        .video-info{
-            padding:1.5rem;
-            position:relative;
-        }
-        
-        .video-info h3{
-            font-family:'Rubik Mono One',sans-serif;
-            color:var(--acid-yellow);
-            font-size:1.1rem;
-            margin-bottom:0.5rem;
-        }
-        
-        .video-info .author{
-            color:var(--electric-blue);
-            font-size:0.9rem;
-            font-weight:bold;
-        }
-        
-        .video-info .stars{
-            color:var(--juicy-orange);
-            font-size:1.2rem;
-            margin:0.5rem 0;
-        }
-        
-        .tips-box{
-            background:linear-gradient(135deg,rgba(204,255,0,0.1),rgba(0,240,255,0.1));
-            border:2px solid var(--acid-yellow);
-            border-radius:15px;
-            padding:1rem;
-            margin-top:1rem;
-            position:relative;
-        }
-        
-        .tips-box::before{
-            content:'💡';
-            position:absolute;
-            top:-15px;
-            left:20px;
-            font-size:1.5rem;
-            background:#0a0a0a;
-            padding:0 10px;
-        }
-        
-        .tips-box strong{
-            color:var(--acid-yellow);
-            display:block;
-            margin-bottom:0.5rem;
-        }
-        
-        .tips-box ul{
-            list-style:none;
-            padding-left:0;
-        }
-        
-        .tips-box li{
-            color:#ccc;
-            margin:0.5rem 0;
-            padding-left:1.5rem;
-            position:relative;
-        }
-        
-        .tips-box li::before{
-            content:'🔥';
-            position:absolute;
-            left:0;
-        }
-        
-        /* VPN BLOCK */
-        .vpn-block{
-            background:linear-gradient(90deg,rgba(255,0,64,0.2),rgba(189,0,255,0.2));
-            border:2px dashed var(--neon-red);
-            border-radius:15px;
-            padding:1rem;
-            margin-top:1rem;
-            text-align:center;
-            animation:vpn-pulse 2s infinite;
-        }
-        
-        @keyframes vpn-pulse{
-            0%,100%{border-color:var(--neon-red)}
-            50%{border-color:var(--candy-pink)}
-        }
-        
-        .vpn-block .vpn-icon{
-            font-size:2.5rem;
-            animation:shield-spin 3s infinite;
-            display:inline-block;
-        }
-        
-        @keyframes shield-spin{
-            0%,100%{transform:rotate(0deg)}
-            25%{transform:rotate(10deg)}
-            75%{transform:rotate(-10deg)}
-        }
-        
-        /* ===== RECIPE CARDS ===== */
-        .recipe-card{
-            background:linear-gradient(145deg,#111,#1a0a1a);
-            border-radius:20px;
-            padding:2rem;
-            margin:2rem 0;
-            border:2px solid #333;
-            position:relative;
-            overflow:hidden;
-            transition:all 0.4s;
-        }
-        
-        .recipe-card::after{
-            content:'';
-            position:absolute;
-            top:0;
-            right:0;
-            width:100px;
-            height:100px;
-            background:radial-gradient(circle,var(--acid-yellow),transparent);
-            opacity:0.1;
-            border-radius:50%;
-        }
-        
-        .recipe-card:hover{
-            border-color:var(--acid-yellow);
-            transform:scale(1.02) translateX(10px);
-            box-shadow:-10px 10px 30px rgba(204,255,0,0.2);
-        }
-        
-        .recipe-card .emoji{
-            font-size:3rem;
-            display:inline-block;
-            animation:emoji-bounce 2s infinite;
-        }
-        
-        @keyframes emoji-bounce{
-            0%,100%{transform:translateY(0)}
-            50%{transform:translateY(-10px)}
-        }
-        
-        .recipe-card h3{
-            font-family:'Rubik Mono One',sans-serif;
-            color:var(--acid-yellow);
-            font-size:1.3rem;
-            margin:1rem 0;
-        }
-        
-        .recipe-card .meta{
-            display:flex;
-            gap:1rem;
-            flex-wrap:wrap;
-            margin-bottom:1rem;
-        }
-        
-        .meta-tag{
-            background:linear-gradient(90deg,var(--electric-blue),var(--candy-pink));
-            color:#000;
-            padding:0.3rem 0.8rem;
-            border-radius:20px;
-            font-size:0.8rem;
-            font-weight:bold;
-        }
-        
-        .recipe-card p{
-            color:#ccc;
-            line-height:1.8;
-        }
-        
-        .recipe-card .btn{
-            display:inline-block;
-            margin-top:1.5rem;
-            padding:1rem 2rem;
-            background:linear-gradient(90deg,var(--acid-yellow),var(--lime));
-            color:#000;
-            text-decoration:none;
-            border-radius:30px;
-            font-family:'Press Start 2P',cursive;
-            font-size:0.7rem;
-            text-transform:uppercase;
-            transition:all 0.3s;
-            border:none;
-            cursor:pointer;
-            box-shadow:0 0 20px rgba(204,255,0,0.4);
-        }
-        
-        .recipe-card .btn:hover{
-            transform:scale(1.1) rotate(-3deg);
-            box-shadow:0 0 40px rgba(204,255,0,0.6),0 0 80px rgba(0,240,255,0.3);
-        }
-        
-        /* ===== CHEF SECTION ===== */
-        .chef-section{
-            background:linear-gradient(135deg,#1a001a,#000);
-            border-radius:30px;
-            padding:3rem;
-            text-align:center;
-            border:3px solid var(--candy-pink);
-            position:relative;
-            overflow:hidden;
-            box-shadow:0 0 60px rgba(255,0,204,0.2);
-        }
-        
-        .chef-avatar{
-            width:150px;
-            height:150px;
-            background:linear-gradient(45deg,var(--acid-yellow),var(--electric-blue),var(--candy-pink));
-            border-radius:50%;
-            margin:0 auto 2rem;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:4rem;
-            border:5px solid #fff;
-            box-shadow:0 0 50px var(--candy-pink);
-            animation:avatar-glow 3s infinite;
-        }
-        
-        @keyframes avatar-glow{
-            0%,100%{box-shadow:0 0 50px var(--candy-pink)}
-            50%{box-shadow:0 0 80px var(--electric-blue),0 0 120px var(--acid-yellow)}
-        }
-        
-        .chef-section h2{
-            font-family:'Rubik Mono One',sans-serif;
-            color:var(--acid-yellow);
-            font-size:2rem;
-            margin-bottom:1rem;
-        }
-        
-        .chef-section .desc{
-            color:#ccc;
-            max-width:600px;
-            margin:0 auto 1.5rem;
-            font-size:1.1rem;
-        }
-        
-        .phone-big{
-            font-family:'Rubik Mono One',sans-serif;
-            font-size:clamp(1.5rem,5vw,2.5rem);
-            background:linear-gradient(90deg,var(--neon-red),var(--candy-pink),var(--juicy-orange));
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            text-shadow:none;
-            margin:1.5rem 0;
-            animation:text-shine 3s infinite;
-        }
-        
-        @keyframes text-shine{
-            0%{background-position:0%}
-            100%{background-position:200%}
-        }
-        
-        .services{
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-            gap:1rem;
-            margin-top:2rem;
-        }
-        
-        .service-tag{
-            background:linear-gradient(145deg,#1a1a1a,#2a2a2a);
-            border:2px solid var(--electric-blue);
-            padding:1rem 1.5rem;
-            border-radius:50px;
-            font-family:'Press Start 2P',cursive;
-            font-size:0.6rem;
-            color:var(--electric-blue);
-            transition:all 0.3s;
-            text-transform:uppercase;
-        }
-        
-        .service-tag:hover{
-            background:var(--electric-blue);
-            color:#000;
-            transform:scale(1.2) rotate(5deg);
-            box-shadow:0 0 30px var(--electric-blue);
-        }
-        
-        /* ===== RESTAURANTS ===== */
-        .rest-card{
-            background:linear-gradient(145deg,#111,#1a001a);
-            border-radius:20px;
-            padding:2rem;
-            margin:1.5rem 0;
-            border:2px solid #333;
-            transition:all 0.4s;
-            position:relative;
-        }
-        
-        .rest-card:hover{
-            border-color:var(--juicy-orange);
-            transform:translateY(-10px) scale(1.02);
-            box-shadow:0 20px 40px rgba(255,107,0,0.2);
-        }
-        
-        .rest-card .stars-big{
-            font-size:1.5rem;
-            margin-bottom:0.5rem;
-        }
-        
-        .rest-card h3{
-            font-family:'Rubik Mono One',sans-serif;
-            color:var(--juicy-orange);
-            font-size:1.3rem;
-        }
-        
-        .rest-card .loc{
-            color:var(--electric-blue);
-            font-size:0.9rem;
-            margin:0.5rem 0;
-        }
-        
-        .rest-card p{color:#aaa}
-        
-        /* ===== FOOTER ===== */
-        footer{
-            text-align:center;
-            padding:4rem 2rem;
-            background:#000;
-            border-top:3px solid var(--acid-yellow);
-            position:relative;
-        }
-        
-        .footer-fire{
-            font-size:3rem;
-            animation:fire-spin 2s infinite;
-            display:inline-block;
-        }
-        
-        @keyframes fire-spin{
-            0%{transform:rotate(0deg) scale(1)}
-            50%{transform:rotate(180deg) scale(1.3)}
-            100%{transform:rotate(360deg) scale(1)}
-        }
-        
-        footer p{
-            color:#555;
-            margin-top:1rem;
-            font-family:'Press Start 2P',cursive;
-            font-size:0.7rem;
-        }
-        
-        .footer-phone{
-            font-family:'Rubik Mono One',sans-serif;
-            font-size:1.5rem;
-            color:var(--neon-red);
-            text-shadow:0 0 30px var(--neon-red);
-            margin-top:1rem;
-        }
-        
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar{width:12px}
-        ::-webkit-scrollbar-track{background:#0a0a0a}
-        ::-webkit-scrollbar-thumb{
-            background:linear-gradient(var(--acid-yellow),var(--electric-blue));
-            border-radius:6px;
-        }
-        
-        /* ===== RESPONSIVE ===== */
-        @media(max-width:600px){
-            .glitch{font-size:2rem}
-            .hero-sub{font-size:0.5rem}
-            nav{gap:0.5rem}
-            .nav-btn{font-size:0.5rem;padding:0.6rem 1rem}
-            .sticker{display:none}
-            .section-title{font-size:1.2rem}
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Прекрасное Мясо</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#0a0a0a;color:#fff;max-width:100%;overflow-x:hidden}
+
+/* VPN предупреждение */
+.vpn-top{background:linear-gradient(90deg,#ff4444,#ff6b35);color:#fff;text-align:center;padding:15px;font-size:14px;font-weight:bold}
+.vpn-top a{color:#FFD700;text-decoration:underline}
+
+/* Шапка */
+.header{background:linear-gradient(135deg,#1a0000,#4a0000,#8B0000);text-align:center;padding:40px 20px}
+.header h1{font-size:32px;color:#FFD700;text-shadow:0 0 20px rgba(255,107,53,0.5);margin-bottom:10px}
+.header p{color:#ff9999;font-size:16px;margin:5px 0}
+.header .phone{font-size:22px;color:#ff4444;margin:15px 0;font-weight:bold}
+
+/* Меню */
+.menu{background:#000;padding:15px;text-align:center;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.menu a{background:#1a1a1a;color:#FFD700;padding:10px 20px;border-radius:20px;text-decoration:none;font-size:14px;font-weight:bold;border:1px solid #ff4444}
+.menu a:hover{background:#ff4444;color:#fff}
+
+/* Заголовки */
+.section-title{color:#FFD700;text-align:center;font-size:22px;margin:30px 0 20px;text-transform:uppercase}
+
+/* ВИДЕО — АДАПТИВНЫЕ, НЕ СЪЕЗЖАЮТ */
+.video-box{background:#111;border-radius:15px;margin:15px;padding:15px;border:1px solid #333}
+.video-box h3{color:#FFD700;font-size:18px;margin-bottom:8px}
+.video-box .author{color:#ff6666;font-size:14px;margin-bottom:12px}
+
+/* Контейнер для видео — 16:9, не съезжает */
+.video-container{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000;border:2px solid #ff4444}
+.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* Советы */
+.tips{background:rgba(255,68,68,0.1);border-left:3px solid #ff4444;padding:15px;margin-top:15px;border-radius:0 10px 10px 0}
+.tips strong{color:#FFD700;display:block;margin-bottom:10px}
+.tips ul{margin-top:10px;padding-left:20px;color:#ccc}
+.tips li{margin:6px 0}
+
+/* Рецепты */
+.recipe{background:#111;border-radius:15px;margin:15px;padding:20px;border-left:3px solid #ff4444}
+.recipe h3{color:#FFD700;font-size:18px;margin-bottom:10px}
+.recipe .meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.recipe .meta span{background:#1a1a1a;color:#888;padding:5px 12px;border-radius:15px;font-size:12px}
+.recipe p{color:#ccc;line-height:1.8;font-size:14px}
+.recipe p strong{color:#FFD700}
+
+/* Шеф */
+.chef{background:linear-gradient(135deg,#1a0000,#0d0000);border-radius:20px;margin:15px;padding:30px;text-align:center;border:2px solid #ff4444}
+.chef .avatar{font-size:60px;margin-bottom:15px}
+.chef h2{color:#FFD700;font-size:22px;margin-bottom:15px}
+.chef p{color:#ccc;font-size:15px;margin:10px 0;max-width:600px;margin-left:auto;margin-right:auto}
+.chef .phone-big{font-size:26px;color:#ff4444;font-weight:bold;margin:20px 0}
+.services{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.services span{background:rgba(255,68,68,0.2);border:1px solid #ff4444;padding:10px 20px;border-radius:25px;font-size:14px}
+
+/* Рестораны */
+.rest{background:#111;border-radius:15px;margin:15px;padding:20px;border:1px solid #222}
+.rest h3{color:#FFD700;font-size:18px;margin-bottom:5px}
+.rest .loc{color:#ff6666;font-size:14px;margin-bottom:10px}
+.rest p{color:#aaa;font-size:14px}
+
+/* Футер */
+.footer{text-align:center;padding:30px;background:#000;border-top:1px solid #333}
+.footer .fire{font-size:30px;margin-bottom:10px}
+.footer p{color:#555;font-size:14px}
+.footer .phone-footer{color:#ff4444;font-size:18px;margin-top:10px}
+
+/* Адаптив */
+@media(max-width:500px){
+.header h1{font-size:26px}
+.header .phone{font-size:18px}
+.menu a{padding:8px 15px;font-size:12px}
+.video-box h3{font-size:16px}
+.recipe h3{font-size:16px}
+.chef .phone-big{font-size:22px}
+}
+</style>
 </head>
 <body>
 
-    <!-- FLOATING STICKERS -->
-    <div class="sticker">🥩</div>
-    <div class="sticker">🔥</div>
-    <div class="sticker">🍖</div>
-    <div class="sticker">⚡</div>
-    <div class="sticker">🌶️</div>
+<!-- VPN -->
+<div class="vpn-top">
+⚠️ В РОССИИ YOUTUBE ЗАБЛОКИРОВАН — <a href="https://play.google.com/store/apps/details?id=com.happ.vpn">ВКЛЮЧИТЕ HAPP VPN</a> ЧТОБЫ СМОТРЕТЬ ВИДЕО ⚠️
+</div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="glitch-wrapper">
-            <h1 class="glitch">ПРЕКРАСНОЕ</h1>
-            <h1 class="glitch" style="color:var(--candy-pink);text-shadow:0.05em 0 0 var(--juicy-orange),-0.05em -0.025em 0 var(--acid-yellow)">МЯСО</h1>
-        </div>
-        <div class="hero-fire">🔥🔥🔥</div>
-        <p class="hero-sub">МЯСНЫЕ ШЕДЕВРЫ • ОГОНЬ • СТРАСТЬ</p>
-        <p class="phone-hero">📞 +7 981 931-24-82</p>
-        <p class="hero-sub" style="color:var(--candy-pink)">ПРИЕДУ И ПРИГОТОВЛЮ!</p>
-    </section>
+<!-- ШАПКА -->
+<div class="header">
+<h1>🔥 ПРЕКРАСНОЕ МЯСО 🔥</h1>
+<p>Мясные шедевры • Огонь • Страсть</p>
+<p class="phone">📞 +7 981 931-24-82</p>
+<p>Приеду и приготовлю! Договоримся о цене.</p>
+</div>
 
-    <!-- MARQUEE -->
-    <div class="marquee">
-        <span>🔥 ШАШЛЫК 🔥 СТЕЙКИ 🔥 BBQ 🔥 ГАРНИРЫ 🔥 БАНКЕТЫ 🔥 НА ВЫЕЗД 🔥 +7 981 931-24-82 🔥 ШАШЛЫК 🔥 СТЕЙКИ 🔥 BBQ 🔥 ГАРНИРЫ 🔥 БАНКЕТЫ 🔥 НА ВЫЕЗД 🔥 </span>
-    </div>
+<!-- МЕНЮ -->
+<div class="menu">
+<a href="#video">🎬 ВИДЕО</a>
+<a href="#recipes">📖 РЕЦЕПТЫ</a>
+<a href="#chef">👨‍🍳 ШЕФ</a>
+<a href="#rest">⭐ РЕСТОРАНЫ</a>
+</div>
 
-    <!-- NAV -->
-    <nav>
-        <a href="#video" class="nav-btn">🎬 ВИДЕО</a>
-        <a href="#recipes" class="nav-btn">📖 РЕЦЕПТЫ</a>
-        <a href="#chef" class="nav-btn">👨‍🍳 ШЕФ</a>
-        <a href="#restaurants" class="nav-btn">⭐ РЕСТОРАНЫ</a>
-    </nav>
+<!-- ВИДЕО -->
+<div id="video">
+<div class="section-title">🎬 ВИДЕО-РЕЦЕПТЫ</div>
 
-    <!-- VPN ALERT -->
-    <section style="padding:1rem;background:linear-gradient(90deg,var(--neon-red),var(--candy-pink));text-align:center;">
-        <p style="font-family:'Press Start 2P',cursive;font-size:0.7rem;color:#fff;">
-            ⚠️ В РОССИИ YOUTUBE ЗАБЛОКИРОВАН — ВКЛЮЧИТЕ VPN (HAPP VPN) ДЛЯ ПРОСМОТРА ВИДЕО ⚠️
-        </p>
-    </section>
+<!-- Видео 1: СВИНИНА / ШАШЛЫК -->
+<div class="video-box">
+<h3>🐷 СВИНИНА / ШАШЛЫК — 3 ошибки при жарке</h3>
+<p class="author">Гриль и BBQ ⭐⭐⭐⭐⭐</p>
+<div class="video-container">
+<<iframe src="https://www.youtube.com/embed/Qj4ezn_AL8E" 
+        title="3 ошибки при жарке мяса" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+</div>
+<div class="tips">
+<strong>🔥 КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
+<ul>
+<li>3 ошибки: не переворачивать часто, не давить на мясо, не резать сразу</li>
+<li>Маринад: лук + соль + специи (минимум 2 часа)</li>
+<li>Угли должны быть СЛАБЫМИ!</li>
+<li>64-65°C внутри — финальная стадия готовности</li>
+<li>Дать мясу отдохнуть 5-10 минут после жарки</li>
+</ul>
+</div>
+</div>
 
-    <!-- VIDEOS -->
-    <section id="video">
-        <h2 class="section-title">🎬 ВИДЕО-РЕЦЕПТЫ</h2>
-        <div class="video-grid">
-            
-            <!-- СВИНИНА/ШАШЛЫК -->
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src="https://www.youtube.com/embed/Qj4ezn_AL8E" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>🐷 СВИНИНА / ШАШЛЫК</h3>
-                    <p class="author">Гриль и BBQ ⭐⭐⭐⭐⭐</p>
-                    <p class="stars">⭐⭐⭐⭐⭐ 5/5</p>
-                    <div class="tips-box">
-                        <strong>КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
-                        <ul>
-                            <li>3 ошибки: не переворачивать часто, не давить, не резать сразу</li>
-                            <li>Маринад: лук + соль + специи (мин. 2 часа)</li>
-                            <li>Угли должны быть СЛАБЫМИ!</li>
-                            <li>64-65°C внутри — финальная стадия</li>
-                            <li>Отдых 5-10 минут после жарки</li>
-                        </ul>
-                    </div>
-                    <div class="vpn-block">
-                        <div class="vpn-icon">🛡️</div>
-                        <p style="color:var(--neon-red);font-weight:bold;">HAPP VPN</p>
-                        <p style="color:#ccc;font-size:0.9rem;">Рекомендую для просмотра в России</p>
-                    </div>
-                </div>
-            </div>
+<!-- Видео 2: БАРАНИНА -->
+<div class="video-box">
+<h3>🐑 БАРАНИНА — рецепт</h3>
+<p class="author">YouTube Shorts ⭐⭐⭐⭐</p>
+<div class="video-container">
+<<iframe src="https://www.youtube.com/embed/5rEI3Pqx0w4" 
+        title="Баранина рецепт" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+</div>
+<div class="tips">
+<strong>🔥 КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
+<ul>
+<li>Шея или корейка — лучшие части для жарки</li>
+<li>Маринад с зирой и кориандром</li>
+<li>Жарить на слабом огне 15-20 минут</li>
+<li>Подавать с лавашем и луком</li>
+</ul>
+</div>
+</div>
 
-            <!-- БАРАНИНА -->
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src="https://www.youtube.com/embed/5rEI3Pqx0w4" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>🐑 БАРАНИНА</h3>
-                    <p class="author">YouTube Shorts ⭐⭐⭐⭐</p>
-                    <p class="stars">⭐⭐⭐⭐ 4/5</p>
-                    <div class="tips-box">
-                        <strong>КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
-                        <ul>
-                            <li>Шея или корейка — лучшие части</li>
-                            <li>Маринад с зирой и кориандром</li>
-                            <li>Жарить на слабом огне 15-20 мин</li>
-                            <li>Подавать с лавашем и луком</li>
-                        </ul>
-                    </div>
-                    <div class="vpn-block">
-                        <div class="vpn-icon">🛡️</div>
-                        <p style="color:var(--neon-red);font-weight:bold;">HAPP VPN</p>
-                        <p style="color:#ccc;font-size:0.9rem;">Рекомендую для просмотра в России</p>
-                    </div>
-                </div>
-            </div>
+<!-- Видео 3: ГОВЯДИНА — ШЕФ СТАЛИН -->
+<div class="video-box">
+<h3>🥩 ГОВЯДИНА — от Шефа Сталина</h3>
+<p class="author">Шеф Сталин ⭐⭐⭐⭐⭐</p>
+<div class="video-container">
+<<iframe src="https://www.youtube.com/embed/BiCp3wZXw7Q" 
+        title="Говядина от Шефа Сталина" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+</iframe>
+</div>
+<div class="tips">
+<strong>🔥 КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
+<ul>
+<li>Выбирать мраморную говядину</li>
+<li>Достать из холодильника за 1 час до готовки</li>
+<li>Посолить за 40 минут до жарки</li>
+<li>Сковорода — чугун, раскалена до дыма</li>
+<li>Масло сливочное + чеснок + тимьян</li>
+<li>Отдых 5-7 минут под фольгой после жарки</li>
+</ul>
+</div>
+</div>
 
-            <!-- ГОВЯДИНА -->
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src="https://www.youtube.com/embed/BiCp3wZXw7Q" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3>🥩 ГОВЯДИНА</h3>
-                    <p class="author">Шеф Сталин ⭐⭐⭐⭐⭐</p>
-                    <p class="stars">⭐⭐⭐⭐⭐ 5/5</p>
-                    <div class="tips-box">
-                        <strong>КЛЮЧЕВЫЕ СОВЕТЫ:</strong>
-                        <ul>
-                            <li>Выбирать мраморную говядину</li>
-                            <li>Достать из холодильника за 1 час</li>
-                            <li>Посолить за 40 минут до жарки</li>
-                            <li>Чугунная сковорода до дыма</li>
-                            <li>Масло + чеснок + тимьян</li>
-                            <li>Отдых 5-7 минут под фольгой</li>
-                        </ul>
-                    </div>
-                    <div class="vpn-block">
-                        <div class="vpn-icon">🛡️</div>
-                        <p style="color:var(--neon-red);font-weight:bold;">HAPP VPN</p>
-                        <p style="color:#ccc;font-size:0.9rem;">Рекомендую для просмотра в России</p>
-                    </div>
-                </div>
-            </div>
+</div>
 
-        </div>
-    </section>
+<!-- РЕЦЕПТЫ -->
+<div id="recipes">
+<div class="section-title">📖 РЕЦЕПТЫ ОТ ШЕФА</div>
 
-    <!-- RECIPES -->
-    <section id="recipes">
-        <h2 class="section-title">📖 РЕЦЕПТЫ ОТ ШЕФА</h2>
-        
-        <div class="recipe-card">
-            <span class="emoji">🥩</span>
-            <h3>СТЕЙК РИБАЙ MEDIUM RARE</h3>
-            <div class="meta">
-                <span class="meta-tag">⏱ 25 МИН</span>
-                <span class="meta-tag">🔥 ВЫСОКАЯ</span>
-                <span class="meta-tag">🥩 ГОВЯДИНА</span>
-            </div>
-            <p>
-                <strong style="color:var(--acid-yellow)">Ингредиенты:</strong> Стейк 400г (2.5 см), соль, перец, розмарин, сливочное масло 30г, чеснок 3 зубчика.<br><br>
-                <strong style="color:var(--acid-yellow)">Пошагово:</strong><br>
-                1. Достать мясо из холодильника за 1 час<br>
-                2. Посолить за 40 минут до жарки<br>
-                3. Разогреть чугунную сковороду до дыма<br>
-                4. Жарить 3 минуты с каждой стороны<br>
-                5. Добавить масло, чеснок, тимьян — поливать 2 минуты<br>
-                6. Отдых 5-7 минут под фольгой<br>
-                <strong style="color:var(--neon-red)">ГОТОВО! Внутри розовый, соки сохранены.</strong>
-            </p>
-            <button class="btn">Смотреть полностью →</button>
-        </div>
+<div class="recipe">
+<h3>🥩 СТЕЙК РИБАЙ MEDIUM RARE</h3>
+<div class="meta">
+<span>⏱ 25 мин</span>
+<span>🔥 Высокая</span>
+<span>🥩 Говядина</span>
+</div>
+<p>
+<strong>Ингредиенты:</strong> Стейк 400г (2.5 см), соль, перец, розмарин, сливочное масло 30г, чеснок 3 зубчика.<br><br>
+<strong>Пошагово:</strong><br>
+1. Достать мясо из холодильника за 1 час<br>
+2. Посолить за 40 минут до жарки<br>
+3. Разогреть чугунную сковороду до дыма<br>
+4. Жарить 3 минуты с каждой стороны<br>
+5. Добавить масло, чеснок, тимьян — поливать 2 минуты<br>
+6. Отдых 5-7 минут под фольгой<br>
+<strong style="color:#ff4444">ГОТОВО! Внутри розовый, соки сохранены.</strong>
+</p>
+</div>
 
-        <div class="recipe-card">
-            <span class="emoji">🔥</span>
-            <h3>ШАШЛЫК ИЗ БАРАНИНЫ</h3>
-            <div class="meta">
-                <span class="meta-tag">⏱ 4 ЧАСА</span>
-                <span class="meta-tag">🔥 УГОЛЬ</span>
-                <span class="meta-tag">🥩 БАРАНИНА</span>
-            </div>
-            <p>
-                <strong style="color:var(--acid-yellow)">Ингредиенты:</strong> Баранина (шея) 1.5кг, лук 3шт, сухое вино 200мл, зира, кориандр, соль, перец.<br><br>
-                <strong style="color:var(--acid-yellow)">Пошагово:</strong><br>
-                1. Нарезать мясо кусками 3-4 см<br>
-                2. Лук полукольцами, размять руками<br>
-                3. Смешать мясо, лук, вино, специи<br>
-                4. Мариновать 3 часа в холодильнике<br>
-                5. Угли до побеления, жарить 7-10 минут<br>
-                6. <strong style="color:var(--neon-red)">Угли должны быть СЛАБЫМИ! 64-65°C внутри — готово</strong><br>
-                <strong style="color:var(--neon-red)">Подавать с лавашем и луком!</strong>
-            </p>
-            <button class="btn">Смотреть полностью →</button>
-        </div>
+<div class="recipe">
+<h3>🔥 ШАШЛЫК ИЗ БАРАНИНЫ</h3>
+<div class="meta">
+<span>⏱ 4 часа</span>
+<span>🔥 Уголь</span>
+<span>🥩 Баранина</span>
+</div>
+<p>
+<strong>Ингредиенты:</strong> Баранина (шея) 1.5кг, лук 3шт, сухое вино 200мл, зира, кориандр, соль, перец.<br><br>
+<strong>Пошагово:</strong><br>
+1. Нарезать мясо кусками 3-4 см<br>
+2. Лук полукольцами, размять руками<br>
+3. Смешать мясо, лук, вино, специи<br>
+4. Мариновать 3 часа в холодильнике<br>
+5. Угли до побеления, жарить 7-10 минут<br>
+6. <strong style="color:#ff4444">Угли должны быть СЛАБЫМИ! 64-65°C внутри — готово</strong><br>
+<strong style="color:#ff4444">Подавать с лавашем и луком!</strong>
+</p>
+</div>
 
-        <div class="recipe-card">
-            <span class="emoji">🍖</span>
-            <h3>СВИНЫЕ РЁБРА BBQ</h3>
-            <div class="meta">
-                <span class="meta-tag">⏱ 3 ЧАСА</span>
-                <span class="meta-tag">🔥 НИЗКАЯ</span>
-                <span class="meta-tag">🥩 СВИНИНА</span>
-            </div>
-            <p>
-                <strong style="color:var(--acid-yellow)">Ингредиенты:</strong> Рёбра 1.5кг, соевый соус 100мл, мёд 3ст.л., чеснок 5 зубчиков, имбирь, паприка, BBQ соус.<br><br>
-                <strong style="color:var(--acid-yellow)">Пошагово:</strong><br>
-                1. Снять плёнку с внутренней стороны<br>
-                2. Маринад: соевый + мёд + чеснок + имбирь + паприка<br>
-                3. Завернуть в фольгу, запекать 2.5 часа при 120°C<br>
-                4. Снять фольгу, смазать BBQ соусом<br>
-                5. Запекать ещё 20 минут при 180°C<br>
-                <strong style="color:var(--neon-red)">Подавать с кукурузой!</strong>
-            </p>
-            <button class="btn">Смотреть полностью →</button>
-        </div>
+<div class="recipe">
+<h3>🍖 СВИНЫЕ РЁБРА BBQ</h3>
+<div class="meta">
+<span>⏱ 3 часа</span>
+<span>🔥 Низкая</span>
+<span>🥩 Свинина</span>
+</div>
+<p>
+<strong>Ингредиенты:</strong> Рёбра 1.5кг, соевый соус 100мл, мёд 3ст.л., чеснок 5 зубчиков, имбирь, паприка, BBQ соус.<br><br>
+<strong>Пошагово:</strong><br>
+1. Снять плёнку с внутренней стороны<br>
+2. Маринад: соевый + мёд + чеснок + имбирь + паприка<br>
+3. Завернуть в фольгу, запекать 2.5 часа при 120°C<br>
+4. Снять фольгу, смазать BBQ соусом<br>
+5. Запекать ещё 20 минут при 180°C<br>
+<strong style="color:#ff4444">Подавать с кукурузой!</strong>
+</p>
+</div>
 
-        <div class="recipe-card">
-            <span class="emoji">🥗</span>
-            <h3>КАРТОФЕЛЬ ПО-ДЕРЕВЕНСКИ</h3>
-            <div class="meta">
-                <span class="meta-tag">⏱ 40 МИН</span>
-                <span class="meta-tag">🔥 СРЕДНЯЯ</span>
-                <span class="meta-tag">🥔 ГАРНИР</span>
-            </div>
-            <p>
-                <strong style="color:var(--acid-yellow)">Ингредиенты:</strong> Молодой картофель 800г, чеснок 4 зубчика, розмарин, оливковое масло, паприка.<br><br>
-                <strong style="color:var(--acid-yellow)">Пошагово:</strong><br>
-                1. Картофель с кожурой, разрезать на 4 части<br>
-                2. Смешать масло, паприку, соль, перец<br>
-                3. Выложить на противень, добавить чеснок и розмарин<br>
-                4. Запекать 35 минут при 200°C<br>
-                <strong style="color:var(--neon-red)">Хрустящая корочка готова!</strong>
-            </p>
-            <button class="btn">Смотреть полностью →</button>
-        </div>
-    </section>
+<div class="recipe">
+<h3>🥗 КАРТОФЕЛЬ ПО-ДЕРЕВЕНСКИ</h3>
+<div class="meta">
+<span>⏱ 40 мин</span>
+<span>🔥 Средняя</span>
+<span>🥔 Гарнир</span>
+</div>
+<p>
+<strong>Ингредиенты:</strong> Молодой картофель 800г, чеснок 4 зубчика, розмарин, оливковое масло, паприка.<br><br>
+<strong>Пошагово:</strong><br>
+1. Картофель с кожурой, разрезать на 4 части<br>
+2. Смешать масло, паприку, соль, перец<br>
+3. Выложить на противень, добавить чеснок и розмарин<br>
+4. Запекать 35 минут при 200°C<br>
+<strong style="color:#ff4444">Хрустящая корочка готова!</strong>
+</p>
+</div>
 
-    <!-- CHEF -->
-    <section id="chef">
-        <div class="chef-section">
-            <div class="chef-avatar">👨‍🍳</div>
-            <h2>ШЕФ НА ВЫЕЗД</h2>
-            <p class="desc">
-                Более 10 лет опыта приготовления мяса. Работал на судах и в полевых условиях — 
-                умею готовить вкусно везде, где есть огонь и мясо! Приеду к вам домой, на дачу, на корпоратив.
-            </p>
-            <p class="phone-big">📞 +7 981 931-24-82</p>
-            <p style="color:var(--candy-pink);font-size:1.1rem;">Звоните — договоримся о стоимости!</p>
-            
-            <div class="services">
-                <div class="service-tag">🔥 ШАШЛЫК</div>
-                <div class="service-tag">🥩 СТЕЙКИ</div>
-                <div class="service-tag">🍖 BBQ</div>
-                <div class="service-tag">🥗 ГАРНИРЫ</div>
-                <div class="service-tag">🎉 БАНКЕТЫ</div>
-                <div class="service-tag">🏠 НА ВЫЕЗД</div>
-                <div class="service-tag">🌲 ПРИРОДА</div>
-                <div class="service-tag">🚗 ПРИЕДУ САМ</div>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- RESTAURANTS -->
-    <section id="restaurants">
-        <h2 class="section-title">⭐ ЛУЧШИЕ РЕСТОРАНЫ МИРА</h2>
-        
-        <div class="rest-card">
-            <div class="stars-big">⭐⭐⭐⭐⭐</div>
-            <h3>NUSR-ET</h3>
-            <p class="loc">📍 Стамбул • Дубай • Нью-Йорк</p>
-            <p>Знаменитый Salt Bae. Фирменная театральная подача мяса. Рибай и Томагавк — must try!</p>
-        </div>
-        
-        <div class="rest-card">
-            <div class="stars-big">⭐⭐⭐⭐⭐</div>
-            <h3>GORDON RAMSAY STEAK</h3>
-            <p class="loc">📍 Лас-Вегас • Лондон</p>
-            <p>Биф Веллингтон — легенда. Идеальная прожарка и бесподобные соусы.</p>
-        </div>
-        
-        <div class="rest-card">
-            <div class="stars-big">⭐⭐⭐⭐⭐</div>
-            <h3>FOGO DE CHÃO</h3>
-            <p class="loc">📍 Бразилия • США</p>
-            <p>Шведский стол по-бразильски. Пиканья, ломбардо — нарезают прямо у стола!</p>
-        </div>
-    </section>
+<!-- ШЕФ -->
+<div id="chef">
+<div class="chef">
+<div class="avatar">👨‍🍳</div>
+<h2>ШЕФ НА ВЫЕЗД</h2>
+<p>Более 10 лет опыта приготовления мяса. Работал на судах и в полевых условиях — умею готовить вкусно везде, где есть огонь и мясо!</p>
+<p>Приеду к вам домой, на дачу, на корпоратив.</p>
+<div class="phone-big">📞 +7 981 931-24-82</div>
+<p style="color:#ff9999">Звоните — договоримся о стоимости!</p>
 
-    <!-- FOOTER -->
-    <footer>
-        <span class="footer-fire">🔥</span>
-        <p>ПРЕКРАСНОЕ МЯСО © 2026</p>
-        <p>ГОТОВИМ С ДУШОЙ И ОГНЁМ</p>
-        <p class="footer-phone">+7 981 931-24-82</p>
-    </footer>
+<div class="services">
+<span>🔥 Шашлык</span>
+<span>🥩 Стейки</span>
+<span>🍖 BBQ</span>
+<span>🥗 Гарниры</span>
+<span>🎉 Банкеты</span>
+<span>🏠 На выезд</span>
+<span>🌲 Природа</span>
+<span>🚗 Приеду сам</span>
+</div>
+</div>
+</div>
+
+<!-- РЕСТОРАНЫ -->
+<div id="rest">
+<div class="section-title">⭐ ЛУЧШИЕ РЕСТОРАНЫ МИРА</div>
+
+<div class="rest">
+<h3>NUSR-ET ⭐⭐⭐⭐⭐</h3>
+<p class="loc">📍 Стамбул • Дубай • Нью-Йорк</p>
+<p>Знаменитый Salt Bae. Фирменная театральная подача мяса. Рибай и Томагавк — must try!</p>
+</div>
+
+<div class="rest">
+<h3>GORDON RAMSAY STEAK ⭐⭐⭐⭐⭐</h3>
+<p class="loc">📍 Лас-Вегас • Лондон</p>
+<p>Биф Веллингтон — легенда. Идеальная прожарка и бесподобные соусы.</p>
+</div>
+
+<div class="rest">
+<h3>FOGO DE CHÃO ⭐⭐⭐⭐⭐</h3>
+<p class="loc">📍 Бразилия • США</p>
+<p>Шведский стол по-бразильски. Пиканья, ломбардо — нарезают прямо у стола!</p>
+</div>
+
+</div>
+
+<!-- ФУТЕР -->
+<div class="footer">
+<div class="fire">🔥</div>
+<p>Прекрасное Мясо © 2026</p>
+<p>Готовим с душой и огнём</p>
+<p class="phone-footer">+7 981 931-24-82</p>
+</div>
 
 </body>
 </html>
