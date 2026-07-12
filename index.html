@@ -92,6 +92,8 @@
   .slot:hover{transform:translateY(-4px) rotateX(6deg);box-shadow:0 20px 40px rgba(0,0,0,.5);border-color:var(--ember1)}
   .slot .cam{font-size:30px;margin-bottom:6px}
   .slot small{font-size:11px}
+  .chef-photo img,.slot img{width:100%;height:100%;object-fit:cover;border-radius:16px;image-orientation:from-image;display:block}
+  .chef-photo.filled,.slot.filled{border:1px solid #3a2a1e;padding:0;overflow:hidden}
 
   /* ---- recipes (3D tilt) ---- */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;perspective:1200px}
@@ -167,9 +169,8 @@
     <h2 class="sec-title">👨‍🍳 Шеф на выезд</h2>
     <p class="sec-sub">Приеду и приготовлю там, где есть огонь и мясо</p>
     <div class="chef-card">
-      <div class="chef-photo tilt">
-        <div class="cam">📷</div>
-        <small>Фото шефа<br>(вставим позже)</small>
+      <div class="chef-photo tilt filled">
+        <img src="img/chef.jpg" alt="Шеф на камбузе судна" loading="lazy">
       </div>
       <div class="chef-info">
         <h3>Мясо с душой и огнём</h3>
@@ -190,12 +191,10 @@
     <h2 class="sec-title">📸 Шеф за работой</h2>
     <p class="sec-sub">Места под ваши фото — пришлите, и я их вставлю</p>
     <div class="gallery">
-      <div class="slot"><div class="cam">📷</div><small>Фото 1</small></div>
-      <div class="slot"><div class="cam">📷</div><small>Фото 2</small></div>
-      <div class="slot"><div class="cam">📷</div><small>Фото 3</small></div>
-      <div class="slot"><div class="cam">📷</div><small>Фото 4</small></div>
-      <div class="slot"><div class="cam">📷</div><small>Фото 5</small></div>
-      <div class="slot"><div class="cam">📷</div><small>Фото 6</small></div>
+      <div class="slot filled tilt"><img src="img/work1.jpg" alt="Шеф за работой" loading="lazy"></div>
+      <div class="slot filled tilt"><img src="img/work2.jpg" alt="Шеф за работой" loading="lazy"></div>
+      <div class="slot filled tilt"><img src="img/work3.jpg" alt="Шеф за работой" loading="lazy"></div>
+      <div class="slot"><div class="cam">📷</div><small>+ ваше фото</small></div>
     </div>
   </section>
 
