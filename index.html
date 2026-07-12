@@ -3,158 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔥 Прекрасное Мясо — Шеф на выезд</title>
+<title>🥐 Прекрасное Мясо — Шеф на выезд</title>
 <style>
   :root{
-    --bg:#0b0b0d; --panel:#141316; --panel2:#1b1714;
-    --ink:#f4f4f5; --muted:#a1a1aa; --line:#2a2a30;
-    --gold:#f5c451; --gold2:#ffdf8a;
-    --ember1:#ff7a18; --ember2:#ff3d3d; --ember3:#b81414;
+    --ink:#3b2a1e; --muted:#8a7360; --line:#ecdcc6;
+    --cream:#fff8ee; --cream2:#f6e9d6; --card:#fffdf9;
+    --terra:#c85a35; --terra2:#a8481f;
+    --gold:#c99a3f; --gold2:#e0b45c;
+    --sage:#7a8b5a;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:var(--bg); color:var(--ink); overflow-x:hidden; line-height:1.6;
+    color:var(--ink); line-height:1.65; overflow-x:hidden;
+    background:
+      radial-gradient(60% 40% at 15% 5%,rgba(224,180,92,.20),transparent 60%),
+      radial-gradient(55% 45% at 90% 15%,rgba(200,90,53,.14),transparent 60%),
+      linear-gradient(180deg,#fff8ee 0%,#f7ecdb 45%,#f3e6d0 100%);
+    background-attachment:fixed;
   }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 16px}
   a{color:inherit;text-decoration:none}
 
-  /* ---- top bar ---- */
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.82);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;max-width:1080px;margin:0 auto}
-  .brand{font-weight:900;letter-spacing:.5px;color:var(--gold);font-size:18px}
-  .brand span{filter:drop-shadow(0 0 6px rgba(255,122,24,.6))}
-  .nav{display:flex;gap:6px;flex-wrap:wrap}
-  .nav a{font-size:13px;font-weight:700;color:var(--muted);padding:7px 12px;border-radius:999px;border:1px solid transparent}
-  .nav a:hover{color:var(--ink);border-color:var(--line);background:#0f0f12}
-  .tg-btn{background:linear-gradient(135deg,#2aabee,#229ED9);color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:13px;white-space:nowrap;box-shadow:0 6px 18px rgba(34,158,217,.35)}
+  /* floating croissants background */
+  .float-crumbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .float-crumbs span{position:absolute;opacity:.16;filter:saturate(1.1);animation:drift 16s ease-in-out infinite}
+  @keyframes drift{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-26px) rotate(8deg)}}
+  .float-crumbs span:nth-child(1){left:4%;top:18%;font-size:52px;animation-delay:0s}
+  .float-crumbs span:nth-child(2){left:88%;top:30%;font-size:40px;animation-delay:2s}
+  .float-crumbs span:nth-child(3){left:12%;top:70%;font-size:34px;animation-delay:4s}
+  .float-crumbs span:nth-child(4){left:80%;top:78%;font-size:48px;animation-delay:6s}
+  .float-crumbs span:nth-child(5){left:48%;top:8%;font-size:30px;animation-delay:3s}
+  .float-crumbs span:nth-child(6){left:60%;top:60%;font-size:38px;animation-delay:5s}
+  body > *:not(.float-crumbs){position:relative;z-index:1}
 
-  /* ---- hero ---- */
-  .hero{position:relative;text-align:center;padding:54px 16px 66px;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:120%;
-    background:radial-gradient(60% 60% at 50% 0%,rgba(255,122,24,.28),transparent 60%),
-               radial-gradient(40% 40% at 80% 20%,rgba(255,61,61,.22),transparent 60%);
-    filter:blur(10px);z-index:0;animation:glow 7s ease-in-out infinite alternate}
-  @keyframes glow{from{opacity:.7;transform:translateY(-6px)}to{opacity:1;transform:translateY(6px)}}
-  .hero > *{position:relative;z-index:1}
-  .medallion{width:130px;height:130px;margin:0 auto 18px;position:relative;perspective:600px}
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,248,238,.8);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;max-width:1060px;margin:0 auto}
+  .brand{font-weight:900;letter-spacing:.3px;color:var(--terra2);font-size:18px;display:flex;align-items:center;gap:6px}
+  .nav{display:flex;gap:4px;flex-wrap:wrap}
+  .nav a{font-size:13px;font-weight:700;color:var(--muted);padding:7px 12px;border-radius:999px}
+  .nav a:hover{color:var(--terra2);background:#fff2e0}
+  .tg-btn{background:linear-gradient(135deg,#41b8e6,#2b9fd4);color:#fff;padding:8px 15px;border-radius:999px;font-weight:800;font-size:13px;white-space:nowrap;box-shadow:0 8px 20px rgba(43,159,212,.3)}
+
+  /* hero */
+  .hero{text-align:center;padding:56px 16px 60px;position:relative;perspective:900px}
+  .medallion{width:132px;height:132px;margin:0 auto 20px;position:relative}
   .ring{position:absolute;inset:0;border-radius:50%;
-    background:conic-gradient(from 0deg,var(--gold),var(--ember1),var(--ember2),var(--gold));
-    -webkit-mask:radial-gradient(farthest-side,transparent 60%,#000 62%);
-            mask:radial-gradient(farthest-side,transparent 60%,#000 62%);
-    animation:spin 6s linear infinite;box-shadow:0 0 30px rgba(255,122,24,.45)}
+    background:conic-gradient(from 0deg,var(--gold2),var(--terra),var(--gold),var(--gold2));
+    -webkit-mask:radial-gradient(farthest-side,transparent 60%,#000 62%);mask:radial-gradient(farthest-side,transparent 60%,#000 62%);
+    animation:spin 9s linear infinite;box-shadow:0 12px 34px rgba(200,90,53,.3)}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .medallion .emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:58px;
-    animation:float 4s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  .hero h1{font-size:clamp(34px,7vw,64px);font-weight:900;letter-spacing:1px;line-height:1.05;
-    background:linear-gradient(180deg,#fff,var(--gold) 60%,var(--ember1));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    text-shadow:0 10px 30px rgba(255,90,20,.15)}
-  .hero .tagline{color:#ffd0b0;margin-top:12px;font-size:clamp(15px,2.6vw,20px);font-weight:600}
-  .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
-  .btn{padding:14px 24px;border-radius:14px;font-weight:800;font-size:16px;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .1s}
+  .medallion .emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:60px;animation:bob 4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0) rotateZ(-3deg)}50%{transform:translateY(-9px) rotateZ(3deg)}}
+  .hero h1{font-size:clamp(32px,6.5vw,58px);font-weight:900;letter-spacing:.3px;line-height:1.06;
+    background:linear-gradient(180deg,var(--terra),var(--gold) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .tagline{color:#9a7c5f;margin-top:12px;font-size:clamp(15px,2.6vw,20px);font-weight:600}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .btn{padding:14px 24px;border-radius:16px;font-weight:800;font-size:16px;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .1s,box-shadow .1s}
   .btn:active{transform:translateY(1px)}
-  .btn-fire{background:linear-gradient(135deg,var(--ember1),var(--ember2));color:#fff;box-shadow:0 12px 30px rgba(255,61,61,.4)}
-  .btn-tg{background:linear-gradient(135deg,#2aabee,#229ED9);color:#fff;box-shadow:0 12px 30px rgba(34,158,217,.4)}
-  .btn-ghost{background:#141316;color:var(--gold);border:1px solid var(--line)}
+  .btn-fire{background:linear-gradient(135deg,var(--terra),var(--terra2));color:#fff;box-shadow:0 12px 28px rgba(200,90,53,.35)}
+  .btn-tg{background:linear-gradient(135deg,#41b8e6,#2b9fd4);color:#fff;box-shadow:0 12px 28px rgba(43,159,212,.35)}
+  .btn-ghost{background:#fff;color:var(--terra2);border:1px solid var(--line)}
 
-  /* ---- section ---- */
-  section{padding:40px 0}
-  .sec-title{text-align:center;font-size:clamp(22px,4vw,32px);font-weight:900;letter-spacing:.5px;margin-bottom:6px;
-    color:var(--gold)}
-  .sec-sub{text-align:center;color:var(--muted);margin-bottom:26px;font-size:15px}
+  /* section */
+  section{padding:38px 0}
+  .sec-title{text-align:center;font-size:clamp(22px,4vw,32px);font-weight:900;margin-bottom:4px;color:var(--terra2)}
+  .sec-sub{text-align:center;color:var(--muted);margin-bottom:24px;font-size:15px}
+  .divider{text-align:center;font-size:26px;opacity:.5;margin:6px 0 2px;letter-spacing:14px}
 
-  /* ---- chef ---- */
-  .chef-card{display:grid;grid-template-columns:260px 1fr;gap:24px;background:linear-gradient(135deg,var(--panel2),#0f0d0c);
-    border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
-  .chef-photo{aspect-ratio:3/4;border-radius:16px;position:relative;overflow:hidden;
-    background:linear-gradient(135deg,#241a14,#120d0b);border:1px dashed #6b4a2e;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#c99a6a}
+  /* chef */
+  .chef-card{display:grid;grid-template-columns:260px 1fr;gap:24px;background:var(--card);
+    border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 26px 54px rgba(120,80,40,.14)}
+  .chef-photo{aspect-ratio:3/4;border-radius:18px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#f0e2cd,#e6d3b8);border:1px dashed #cbae86;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#a98a5f}
   .chef-photo .cam{font-size:40px;margin-bottom:8px}
-  .chef-photo small{font-size:12px;padding:0 14px}
-  .chef-info h3{color:var(--gold2);font-size:24px;margin-bottom:8px}
-  .chef-info p{color:#d4d4d8;margin:8px 0;font-size:15px}
-  .phone-big{font-size:26px;font-weight:900;color:#fff;margin:14px 0;
-    text-shadow:0 0 18px rgba(255,122,24,.5)}
-  .phone-big a{color:var(--ember1)}
+  .chef-info h3{color:var(--terra2);font-size:24px;margin-bottom:8px}
+  .chef-info p{color:#5f4b39;margin:8px 0;font-size:15px}
+  .phone-big{font-size:26px;font-weight:900;color:var(--terra2);margin:14px 0}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-  .chips span{background:rgba(255,122,24,.12);border:1px solid rgba(255,122,24,.35);color:#ffcf9e;
-    padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+  .chips span{background:#fff2e0;border:1px solid #f0d3ad;color:#a5623a;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
 
-  /* ---- gallery (photo placeholders) ---- */
+  /* gallery */
   .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;perspective:1000px}
-  .slot{aspect-ratio:1;border-radius:16px;background:linear-gradient(135deg,#1a1512,#0e0b0a);
-    border:1px dashed #6b4a2e;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    color:#b98a5c;text-align:center;transition:transform .15s,box-shadow .15s;transform-style:preserve-3d}
-  .slot:hover{transform:translateY(-4px) rotateX(6deg);box-shadow:0 20px 40px rgba(0,0,0,.5);border-color:var(--ember1)}
-  .slot .cam{font-size:30px;margin-bottom:6px}
-  .slot small{font-size:11px}
-  .chef-photo img,.slot img{width:100%;height:100%;object-fit:cover;border-radius:16px;image-orientation:from-image;display:block}
-  .chef-photo.filled,.slot.filled{border:1px solid #3a2a1e;padding:0;overflow:hidden}
+  .slot{aspect-ratio:1;border-radius:18px;background:linear-gradient(135deg,#f0e2cd,#e6d3b8);
+    border:1px dashed #cbae86;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#a98a5f;text-align:center;transition:transform .15s,box-shadow .15s;transform-style:preserve-3d}
+  .slot:hover{transform:translateY(-5px) rotateX(6deg);box-shadow:0 20px 40px rgba(120,80,40,.2)}
+  .slot .cam{font-size:30px;margin-bottom:6px}.slot small{font-size:11px}
+  .chef-photo img,.slot img{width:100%;height:100%;object-fit:cover;border-radius:18px;image-orientation:from-image;display:block}
+  .chef-photo.filled,.slot.filled{border:1px solid var(--line);padding:0;overflow:hidden}
 
-  /* ---- recipes (3D tilt) ---- */
+  /* recipes / video / rest cards */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;perspective:1200px}
-  .card{background:linear-gradient(160deg,var(--panel),#0e0e11);border:1px solid var(--line);border-radius:18px;
-    padding:22px;transition:transform .12s ease,box-shadow .12s ease;transform-style:preserve-3d;will-change:transform}
-  .card h3{color:var(--gold2);font-size:19px;margin-bottom:10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;
+    transition:transform .12s,box-shadow .12s;transform-style:preserve-3d;will-change:transform;
+    box-shadow:0 14px 30px rgba(120,80,40,.1)}
+  .card:hover{box-shadow:0 26px 50px rgba(120,80,40,.18)}
+  .card h3{color:var(--terra2);font-size:19px;margin-bottom:10px}
   .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-  .meta span{background:#0f0f12;border:1px solid var(--line);color:#9a9aa2;padding:5px 11px;border-radius:999px;font-size:12px}
-  .card p{color:#c9c9cf;font-size:14px}
-  .card p strong{color:var(--gold)}
-  .card .accent{color:var(--ember1);font-weight:800}
-  .card .badge3d{display:inline-block;transform:translateZ(30px)}
+  .meta span{background:#f7ecda;border:1px solid var(--line);color:#977a5c;padding:5px 11px;border-radius:999px;font-size:12px}
+  .card p{color:#5f4b39;font-size:14px}.card p strong{color:var(--terra2)}
+  .card .accent{color:var(--terra);font-weight:800}
+  .badge3d{display:inline-block;transform:translateZ(28px)}
 
-  /* ---- restaurants ---- */
-  .rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-  .rest{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
-  .rest h3{color:var(--gold2);font-size:17px}
-  .rest .loc{color:var(--ember1);font-size:13px;margin:6px 0 10px;font-weight:700}
-  .rest p{color:#a9a9b0;font-size:14px}
-
-  /* видео */
   .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;perspective:1000px}
-  .vcard{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
-    background:linear-gradient(160deg,#20100c,#0e0b0a);border:1px solid #3a1f16;border-radius:18px;
-    padding:26px 18px;transition:transform .12s,box-shadow .12s;transform-style:preserve-3d}
-  .vcard:hover{box-shadow:0 20px 44px rgba(255,61,61,.28);border-color:var(--ember1)}
-  .vplay{width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-size:26px;background:linear-gradient(135deg,var(--ember1),var(--ember2));
-    box-shadow:0 10px 26px rgba(255,61,61,.5)}
-  .vmeat{font-size:20px;font-weight:800;color:var(--gold2)}
+  .vcard{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;background:var(--card);
+    border:1px solid var(--line);border-radius:20px;padding:26px 18px;transition:transform .12s,box-shadow .12s;
+    transform-style:preserve-3d;box-shadow:0 14px 30px rgba(120,80,40,.1)}
+  .vcard:hover{box-shadow:0 24px 48px rgba(200,90,53,.2)}
+  .vplay{width:66px;height:66px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;
+    background:linear-gradient(135deg,var(--terra),var(--terra2));box-shadow:0 10px 24px rgba(200,90,53,.4)}
+  .vmeat{font-size:20px;font-weight:800;color:var(--terra2)}
   .vbtn{font-size:13px;font-weight:800;color:#fff;background:#c1121f;padding:9px 18px;border-radius:999px}
 
-  /* ---- CTA band ---- */
-  .band{background:linear-gradient(135deg,var(--ember3),#2a0a0a);border:1px solid #4a1616;border-radius:22px;
-    text-align:center;padding:34px 20px;margin:10px 0}
-  .band h2{font-size:26px;color:#fff;margin-bottom:8px}
-  .band p{color:#ffd0c0;margin-bottom:18px}
+  .rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+  .rest{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 26px rgba(120,80,40,.09)}
+  .rest h3{color:var(--terra2);font-size:17px}
+  .rest .loc{color:var(--terra);font-size:13px;margin:6px 0 10px;font-weight:700}
+  .rest p{color:#6b5744;font-size:14px}
 
-  footer{text-align:center;padding:34px 16px;color:#6b6b72;border-top:1px solid var(--line);margin-top:20px}
-  footer .fire{font-size:28px}
-  footer .ph{color:var(--ember1);font-weight:800;margin-top:8px;font-size:18px}
+  .band{background:linear-gradient(135deg,#fbead2,#f6dcbb);border:1px solid #eccfa4;border-radius:24px;
+    text-align:center;padding:34px 20px;box-shadow:0 18px 40px rgba(120,80,40,.12)}
+  .band h2{font-size:26px;color:var(--terra2);margin-bottom:8px}
+  .band p{color:#8a6a48;margin-bottom:18px}
+
+  footer{text-align:center;padding:34px 16px;color:#9a8570;margin-top:16px}
+  footer .ph{color:var(--terra2);font-weight:800;margin-top:8px;font-size:18px}
+  .visits{margin-top:12px;font-size:14px;color:#8a7360}
+  .visits b{color:var(--terra2)}
 
   @media(max-width:560px){
-    .chef-card{grid-template-columns:1fr}
-    .chef-photo{max-width:220px;margin:0 auto}
-    .nav{display:none}
+    .chef-card{grid-template-columns:1fr}.chef-photo{max-width:220px;margin:0 auto}.nav{display:none}
   }
 </style>
 </head>
 <body>
 
+<div class="float-crumbs" aria-hidden="true">
+  <span>🥐</span><span>🥐</span><span>🥐</span><span>🥐</span><span>🥐</span><span>🥐</span>
+</div>
+
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="row">
-    <div class="brand"><span>🔥</span> ПРЕКРАСНОЕ МЯСО</div>
+    <div class="brand">🥐🔥 Прекрасное Мясо</div>
     <div class="nav">
-      <a href="#chef">Шеф</a>
-      <a href="#gallery">Фото</a>
-      <a href="#recipes">Рецепты</a>
-      <a href="#video">Видео</a>
-      <a href="#rest">Рестораны</a>
+      <a href="#chef">Шеф</a><a href="#gallery">Фото</a><a href="#recipes">Рецепты</a>
+      <a href="#video">Видео</a><a href="#rest">Рестораны</a>
     </div>
     <a class="tg-btn" href="https://t.me/cook46_bot" target="_blank" rel="noopener">✈️ Telegram</a>
   </div>
@@ -162,12 +161,9 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="medallion">
-    <div class="ring"></div>
-    <div class="emoji">🔥</div>
-  </div>
-  <h1>ПРЕКРАСНОЕ МЯСО</h1>
-  <p class="tagline">Шеф на выезд • Огонь • Страсть • Мясные шедевры</p>
+  <div class="medallion"><div class="ring"></div><div class="emoji">🥐</div></div>
+  <h1>Прекрасное Мясо</h1>
+  <p class="tagline">Шеф на выезд · тепло · аромат · аппетит 🥐</p>
   <div class="cta">
     <a class="btn btn-fire" href="tel:+79819312482">📞 Позвонить шефу</a>
     <a class="btn btn-tg" href="https://t.me/cook46_bot" target="_blank" rel="noopener">✈️ Написать в Telegram</a>
@@ -180,29 +176,28 @@
   <!-- ШЕФ -->
   <section id="chef">
     <h2 class="sec-title">👨‍🍳 Шеф на выезд</h2>
-    <p class="sec-sub">Приеду и приготовлю там, где есть огонь и мясо</p>
+    <p class="sec-sub">Приеду и приготовлю там, где есть огонь и аппетит</p>
     <div class="chef-card">
-      <div class="chef-photo tilt filled">
-        <img src="img/chef.jpg" alt="Шеф на камбузе судна" loading="lazy">
-      </div>
+      <div class="chef-photo tilt filled"><img src="img/chef.jpg" alt="Шеф на камбузе судна" loading="lazy"></div>
       <div class="chef-info">
-        <h3>Мясо с душой и огнём</h3>
+        <h3>Мясо с душой и теплом</h3>
         <p>Более 10 лет опыта приготовления мяса. Работал на судах и в полевых условиях — умею готовить вкусно везде, где есть огонь и мясо!</p>
         <p>Приеду к вам домой, на дачу или на корпоратив. Договоримся о цене.</p>
         <div class="phone-big">📞 <a href="tel:+79819312482">+7 981 931-24-82</a></div>
         <div class="chips">
-          <span>🔥 Шашлык</span><span>🥩 Стейки</span><span>🍖 BBQ</span>
-          <span>🥗 Гарниры</span><span>🎉 Банкеты</span><span>🏠 На выезд</span>
-          <span>🌲 Природа</span><span>🚗 Приеду сам</span>
+          <span>🔥 Шашлык</span><span>🥩 Стейки</span><span>🍖 BBQ</span><span>🥗 Гарниры</span>
+          <span>🥐 Выпечка</span><span>🎉 Банкеты</span><span>🏠 На выезд</span><span>🚗 Приеду сам</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ГАЛЕРЕЯ ФОТО -->
+  <div class="divider">🥐 🔥 🥐</div>
+
+  <!-- ГАЛЕРЕЯ -->
   <section id="gallery">
     <h2 class="sec-title">📸 Шеф за работой</h2>
-    <p class="sec-sub">Места под ваши фото — пришлите, и я их вставлю</p>
+    <p class="sec-sub">Живые кадры — можно добавить ещё</p>
     <div class="gallery">
       <div class="slot filled tilt"><img src="img/work1.jpg" alt="Шеф за работой" loading="lazy"></div>
       <div class="slot filled tilt"><img src="img/work2.jpg" alt="Шеф за работой" loading="lazy"></div>
@@ -211,12 +206,13 @@
     </div>
   </section>
 
+  <div class="divider">🥐 🔥 🥐</div>
+
   <!-- РЕЦЕПТЫ -->
   <section id="recipes">
     <h2 class="sec-title">📖 Рецепты от шефа</h2>
     <p class="sec-sub">Наведите на карточку — она оживает в 3D</p>
     <div class="grid">
-
       <div class="card tilt">
         <h3><span class="badge3d">🥩</span> Стейк Рибай medium rare</h3>
         <div class="meta"><span>⏱ 25 мин</span><span>🔥 Высокая</span><span>🥩 Говядина</span></div>
@@ -226,7 +222,6 @@
         5. Добавить масло, чеснок, тимьян — поливать 2 минуты<br>6. Отдых 5–7 минут под фольгой<br>
         <span class="accent">Готово! Внутри розовый, соки сохранены.</span></p>
       </div>
-
       <div class="card tilt">
         <h3><span class="badge3d">🔥</span> Шашлык из баранины</h3>
         <div class="meta"><span>⏱ 4 часа</span><span>🔥 Уголь</span><span>🥩 Баранина</span></div>
@@ -236,7 +231,6 @@
         5. Угли до побеления, жарить 7–10 минут<br>
         <span class="accent">Угли слабые! 64–65 °C внутри — готово. Подавать с лавашем и луком!</span></p>
       </div>
-
       <div class="card tilt">
         <h3><span class="badge3d">🍖</span> Свиные рёбра BBQ</h3>
         <div class="meta"><span>⏱ 3 часа</span><span>🔥 Низкая</span><span>🥩 Свинина</span></div>
@@ -245,59 +239,53 @@
         3. Завернуть в фольгу, запекать 2.5 часа при 120 °C<br>4. Снять фольгу, смазать BBQ соусом<br>
         5. Запекать ещё 20 минут при 180 °C<br><span class="accent">Подавать с кукурузой!</span></p>
       </div>
-
       <div class="card tilt">
-        <h3><span class="badge3d">🥔</span> Картофель по-деревенски</h3>
-        <div class="meta"><span>⏱ 40 мин</span><span>🔥 Средняя</span><span>🥔 Гарнир</span></div>
-        <p><strong>Ингредиенты:</strong> молодой картофель 800 г, чеснок 4 зубчика, розмарин, оливковое масло, паприка.<br><br>
-        <strong>Пошагово:</strong><br>1. Картофель с кожурой, разрезать на 4 части<br>2. Смешать масло, паприку, соль, перец<br>
-        3. Выложить на противень, добавить чеснок и розмарин<br>4. Запекать 35 минут при 200 °C<br>
-        <span class="accent">Хрустящая корочка готова!</span></p>
+        <h3><span class="badge3d">🥐</span> Круассаны к завтраку</h3>
+        <div class="meta"><span>⏱ 3 часа</span><span>🔥 Средняя</span><span>🥐 Выпечка</span></div>
+        <p><strong>Ингредиенты:</strong> мука 500 г, сливочное масло 280 г, молоко 140 мл, дрожжи 10 г, сахар 55 г, соль, 1 яйцо.<br><br>
+        <strong>Пошагово:</strong><br>1. Замесить тесто, убрать в холод на 1 час<br>2. Раскатать, вложить пласт масла, сложить конвертом<br>
+        3. Раскатать и сложить 3 раза, охлаждая между разами<br>4. Нарезать треугольники, свернуть рогалики<br>
+        5. Расстойка 1.5 часа, смазать яйцом<br>6. Выпекать 15–18 минут при 200 °C<br>
+        <span class="accent">Хрустящие снаружи, воздушные внутри!</span></p>
       </div>
-
     </div>
   </section>
 
-  <!-- ВИДЕО-РЕЦЕПТЫ -->
+  <div class="divider">🥐 🔥 🥐</div>
+
+  <!-- ВИДЕО -->
   <section id="video">
     <h2 class="sec-title">🎬 Видео-рецепты</h2>
     <p class="sec-sub">Смотрите, как готовит шеф</p>
     <div class="vgrid">
       <a class="vcard tilt" href="https://youtu.be/t1Pj4TuCamc" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div>
-        <div class="vmeat">🥩 Говядина</div>
-        <div class="vbtn">Смотреть на YouTube</div>
-      </a>
+        <div class="vplay">▶️</div><div class="vmeat">🥩 Говядина</div><div class="vbtn">Смотреть на YouTube</div></a>
       <a class="vcard tilt" href="https://youtu.be/uzntwrOHibU" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div>
-        <div class="vmeat">🍗 Курица</div>
-        <div class="vbtn">Смотреть на YouTube</div>
-      </a>
+        <div class="vplay">▶️</div><div class="vmeat">🍗 Курица</div><div class="vbtn">Смотреть на YouTube</div></a>
       <a class="vcard tilt" href="https://youtu.be/Qj4ezn_AL8E" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div>
-        <div class="vmeat">🐷 Свинина</div>
-        <div class="vbtn">Смотреть на YouTube</div>
-      </a>
+        <div class="vplay">▶️</div><div class="vmeat">🐷 Свинина</div><div class="vbtn">Смотреть на YouTube</div></a>
     </div>
     <p class="sec-sub" style="margin-top:16px;font-size:13px">▶️ Видео открываются на YouTube — в России может понадобиться VPN.</p>
   </section>
+
+  <div class="divider">🥐 🔥 🥐</div>
 
   <!-- РЕСТОРАНЫ -->
   <section id="rest">
     <h2 class="sec-title">⭐ Лучшие мясные рестораны мира</h2>
     <p class="sec-sub">За вдохновением — к легендам</p>
     <div class="rgrid">
-      <div class="rest"><h3>NUSR-ET ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Стамбул • Дубай • Нью-Йорк</p><p>Знаменитый Salt Bae. Театральная подача мяса. Рибай и Томагавк — must try!</p></div>
-      <div class="rest"><h3>GORDON RAMSAY STEAK ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Лас-Вегас • Лондон</p><p>Биф Веллингтон — легенда. Идеальная прожарка и бесподобные соусы.</p></div>
-      <div class="rest"><h3>FOGO DE CHÃO ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Бразилия • США</p><p>Шведский стол по-бразильски. Пиканья и ломбардо — нарезают прямо у стола!</p></div>
+      <div class="rest"><h3>NUSR-ET ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Стамбул · Дубай · Нью-Йорк</p><p>Знаменитый Salt Bae. Театральная подача мяса. Рибай и Томагавк — must try!</p></div>
+      <div class="rest"><h3>GORDON RAMSAY STEAK ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Лас-Вегас · Лондон</p><p>Биф Веллингтон — легенда. Идеальная прожарка и бесподобные соусы.</p></div>
+      <div class="rest"><h3>FOGO DE CHÃO ⭐⭐⭐⭐⭐</h3><p class="loc">📍 Бразилия · США</p><p>Шведский стол по-бразильски. Пиканья и ломбардо — нарезают прямо у стола!</p></div>
     </div>
   </section>
 
   <!-- CTA -->
   <section>
     <div class="band">
-      <h2>🔥 Заказать шефа на выезд</h2>
-      <p>Дом • дача • корпоратив • природа — приеду и приготовлю</p>
+      <h2>🥐🔥 Заказать шефа на выезд</h2>
+      <p>Дом · дача · корпоратив · природа — приеду и приготовлю</p>
       <div class="cta">
         <a class="btn btn-fire" href="tel:+79819312482">📞 +7 981 931-24-82</a>
         <a class="btn btn-tg" href="https://t.me/cook46_bot" target="_blank" rel="noopener">✈️ Написать в Telegram</a>
@@ -308,25 +296,29 @@
 </div>
 
 <footer>
-  <div class="fire">🔥</div>
-  <p>Прекрасное Мясо © 2026 — готовим с душой и огнём</p>
+  <div style="font-size:26px">🥐 🔥 🥐</div>
+  <p>Прекрасное Мясо © 2026 — готовим с душой и теплом</p>
   <p class="ph">+7 981 931-24-82</p>
+  <p class="visits" id="visits" style="display:none">👀 Посетителей: <b id="vcount">…</b></p>
 </footer>
 
 <script>
-  // Лёгкий 3D-наклон карточек за курсором (на телефоне не мешает)
-  var canHover = window.matchMedia("(hover: hover)").matches;
-  if(canHover){
+  // 3D-наклон карточек за курсором
+  if(window.matchMedia("(hover: hover)").matches){
     document.querySelectorAll(".tilt").forEach(function(el){
       el.addEventListener("mousemove", function(e){
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = "translateY(-6px) rotateX(" + (-py*8).toFixed(2) + "deg) rotateY(" + (px*8).toFixed(2) + "deg)";
+        var r=el.getBoundingClientRect();
+        var px=(e.clientX-r.left)/r.width-0.5, py=(e.clientY-r.top)/r.height-0.5;
+        el.style.transform="translateY(-6px) rotateX("+(-py*8).toFixed(2)+"deg) rotateY("+(px*8).toFixed(2)+"deg)";
       });
-      el.addEventListener("mouseleave", function(){ el.style.transform = ""; });
+      el.addEventListener("mouseleave", function(){ el.style.transform=""; });
     });
   }
+  // Счётчик посетителей (бесплатный сервис, без регистрации). Если недоступен — просто скрыт.
+  fetch("https://abacus.jasoncameron.dev/hit/trainingsw75-meat-site/visits")
+    .then(function(r){return r.json()})
+    .then(function(d){ if(d && d.value!=null){ document.getElementById("vcount").textContent=d.value; document.getElementById("visits").style.display="block"; }})
+    .catch(function(){});
 </script>
 </body>
 </html>
