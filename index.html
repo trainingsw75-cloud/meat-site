@@ -119,6 +119,11 @@
     background:linear-gradient(135deg,var(--terra),var(--terra2));box-shadow:0 10px 24px rgba(200,90,53,.4)}
   .vmeat{font-size:20px;font-weight:800;color:var(--terra2)}
   .vbtn{font-size:13px;font-weight:800;color:#fff;background:#c1121f;padding:9px 18px;border-radius:999px}
+  .vgrid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .vitem{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:0 14px 30px rgba(120,80,40,.1)}
+  .vwrap{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:#000}
+  .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vlink{display:block;text-align:center;margin-top:10px;font-weight:800;color:var(--terra2);text-decoration:none}
 
   .rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
   .rest{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 26px rgba(120,80,40,.09)}
@@ -257,15 +262,21 @@
   <section id="video">
     <h2 class="sec-title">🎬 Видео-рецепты</h2>
     <p class="sec-sub">Смотрите, как готовит шеф</p>
-    <div class="vgrid">
-      <a class="vcard tilt" href="https://youtu.be/t1Pj4TuCamc" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div><div class="vmeat">🥩 Говядина</div><div class="vbtn">Смотреть на YouTube</div></a>
-      <a class="vcard tilt" href="https://youtu.be/uzntwrOHibU" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div><div class="vmeat">🍗 Курица</div><div class="vbtn">Смотреть на YouTube</div></a>
-      <a class="vcard tilt" href="https://youtu.be/Qj4ezn_AL8E" target="_blank" rel="noopener">
-        <div class="vplay">▶️</div><div class="vmeat">🐷 Свинина</div><div class="vbtn">Смотреть на YouTube</div></a>
+    <div class="vgrid2">
+      <div class="vitem">
+        <div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/t1Pj4TuCamc" loading="lazy" allowfullscreen title="Говядина"></iframe></div>
+        <a class="vlink" href="https://youtu.be/t1Pj4TuCamc" target="_blank" rel="noopener">🥩 Говядина — открыть на YouTube ↗</a>
+      </div>
+      <div class="vitem">
+        <div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/uzntwrOHibU" loading="lazy" allowfullscreen title="Курица"></iframe></div>
+        <a class="vlink" href="https://youtu.be/uzntwrOHibU" target="_blank" rel="noopener">🍗 Курица — открыть на YouTube ↗</a>
+      </div>
+      <div class="vitem">
+        <div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/Qj4ezn_AL8E" loading="lazy" allowfullscreen title="Свинина"></iframe></div>
+        <a class="vlink" href="https://youtu.be/Qj4ezn_AL8E" target="_blank" rel="noopener">🐷 Свинина — открыть на YouTube ↗</a>
+      </div>
     </div>
-    <p class="sec-sub" style="margin-top:16px;font-size:13px">▶️ Видео открываются на YouTube — в России может понадобиться VPN.</p>
+    <p class="sec-sub" style="margin-top:16px;font-size:13px">▶️ Плееры встроены в страницу. Если видео не проигрывается — в России для YouTube нужен VPN (нажмите ссылку под плеером).</p>
   </section>
 
   <div class="divider">🥐 🔥 🥐</div>
