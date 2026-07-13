@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cook46 — меню</title>
+<title>Cook46 — меню / menu</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:#3b2a1e;min-height:100vh;
@@ -12,8 +12,11 @@
       radial-gradient(55% 45% at 90% 90%,rgba(200,90,53,.16),transparent 60%),
       linear-gradient(180deg,#fff8ee,#f3e6d0)}
   h1{font-size:30px;font-weight:900;color:#a8481f;text-align:center;margin-bottom:6px}
-  .sub{color:#8a7360;text-align:center;margin-bottom:26px;font-size:15px}
-  .cards{display:flex;flex-direction:column;gap:16px;width:100%;max-width:420px}
+  .sub{color:#8a7360;text-align:center;margin-bottom:16px;font-size:15px}
+  .lang{display:flex;gap:6px;background:#fffdf9;border:1px solid #ecdcc6;border-radius:999px;padding:4px;margin-bottom:22px}
+  .lang button{border:0;background:transparent;color:#8a7360;font-weight:800;font-size:14px;padding:7px 16px;border-radius:999px;cursor:pointer}
+  .lang button.active{background:linear-gradient(135deg,#c85a35,#a8481f);color:#fff}
+  .cards{display:flex;flex-direction:column;gap:16px;width:100%;max-width:430px}
   .card{display:flex;align-items:center;gap:16px;background:#fffdf9;border:1px solid #ecdcc6;border-radius:20px;
     padding:20px 22px;box-shadow:0 16px 34px rgba(120,80,40,.14);transition:transform .12s,box-shadow .12s}
   .card:hover{transform:translateY(-4px);box-shadow:0 24px 44px rgba(120,80,40,.22)}
@@ -22,25 +25,54 @@
   .txt p{font-size:13px;color:#8a7360}
   .arrow{margin-left:auto;font-size:22px;color:#c85a35}
   a{text-decoration:none;color:inherit}
-  .foot{margin-top:26px;color:#9a8570;font-size:13px;text-align:center}
+  .foot{margin-top:24px;color:#9a8570;font-size:13px;text-align:center}
   .foot a{color:#a8481f;font-weight:800}
 </style>
 </head>
 <body>
   <h1>🥐🔥 Cook46</h1>
-  <p class="sub">Выберите раздел</p>
+  <p class="sub" data-ru="Выберите раздел" data-en="Choose a section">Выберите раздел</p>
+
+  <div class="lang" role="group" aria-label="language">
+    <button id="btn-ru" class="active" onclick="setLang('ru')">RU</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+
   <div class="cards">
     <a class="card" href="https://trainingsw75-cloud.github.io/meat-site/">
       <div class="ico">🥩</div>
-      <div class="txt"><h2>Прекрасное Мясо</h2><p>Шеф на выезд · рецепты · видео</p></div>
+      <div class="txt">
+        <h2 data-ru="Прекрасное Мясо" data-en="Beautiful Meat">Прекрасное Мясо</h2>
+        <p data-ru="Шеф на выезд · рецепты · видео" data-en="Private chef · recipes · videos">Шеф на выезд · рецепты · видео</p>
+      </div>
       <div class="arrow">→</div>
     </a>
     <a class="card" href="https://trainingsw75-cloud.github.io/podagra-site/">
       <div class="ico">🩺</div>
-      <div class="txt"><h2>Калькулятор подагры</h2><p>Мочевая кислота · нормы · расшифровка</p></div>
+      <div class="txt">
+        <h2 data-ru="Калькулятор подагры" data-en="Gout / Uric Acid Calculator">Калькулятор подагры</h2>
+        <p data-ru="Мочевая кислота · нормы · расшифровка" data-en="Uric acid · reference ranges · guide">Мочевая кислота · нормы · расшифровка</p>
+      </div>
       <div class="arrow">→</div>
     </a>
   </div>
+
   <p class="foot">📞 <a href="tel:+79819312482">+7 981 931-24-82</a></p>
+
+<script>
+  function setLang(l){
+    document.querySelectorAll("[data-ru]").forEach(function(el){
+      el.textContent = (l === "en") ? el.dataset.en : el.dataset.ru;
+    });
+    document.documentElement.lang = l;
+    document.getElementById("btn-ru").classList.toggle("active", l === "ru");
+    document.getElementById("btn-en").classList.toggle("active", l === "en");
+    try { localStorage.setItem("cook46lang", l); } catch(e){}
+  }
+  // авто-язык: сохранённый выбор или язык устройства
+  var saved = null; try { saved = localStorage.getItem("cook46lang"); } catch(e){}
+  var start = saved || ((navigator.language || "ru").slice(0,2) === "en" ? "en" : "ru");
+  setLang(start);
+</script>
 </body>
 </html>
