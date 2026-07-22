@@ -25,9 +25,18 @@
   .lang button.active{background:linear-gradient(135deg,#c85a35,#a8481f);color:#fff}
   .cards{display:flex;flex-direction:column;gap:16px;width:100%;max-width:430px}
   .card{display:flex;align-items:center;gap:16px;background:#fffdf9;border:1px solid #ecdcc6;border-radius:20px;
-    padding:20px 22px;box-shadow:0 16px 34px rgba(120,80,40,.14);transition:transform .12s,box-shadow .12s}
-  .card:hover{transform:translateY(-4px);box-shadow:0 24px 44px rgba(120,80,40,.22)}
-  .ico{font-size:42px;flex:0 0 auto}
+    padding:20px 22px;box-shadow:0 16px 34px rgba(120,80,40,.14);transition:transform .18s ease,box-shadow .25s ease;
+    transform-style:preserve-3d;will-change:transform}
+  .card:hover{transform:translateY(-4px);box-shadow:0 28px 54px rgba(120,80,40,.28)}
+  .ico{font-size:42px;flex:0 0 auto;transform:translateZ(34px);filter:drop-shadow(0 6px 10px rgba(120,80,40,.35))}
+  .txt,.arrow{transform:translateZ(18px)}
+  body::before,body::after{content:"";position:fixed;z-index:-1;width:60vmax;height:60vmax;border-radius:50%;
+    filter:blur(80px);opacity:.30;pointer-events:none}
+  body::before{background:#f2cd88;top:-20vmax;left:-16vmax;animation:drift 24s ease-in-out infinite alternate}
+  body::after{background:#e8a07a;bottom:-24vmax;right:-14vmax;animation:drift 32s ease-in-out infinite alternate-reverse}
+  @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(8vmax,6vmax,0) scale(1.15)}}
+  h1{text-shadow:0 1px 0 #e9c9a2,0 2px 0 #ddb98e,0 3px 0 #d1a97a,0 8px 18px rgba(120,80,40,.35)}
+  @media (prefers-reduced-motion: reduce){body::before,body::after{animation:none}.card{transition:none}}
   .txt h2{font-size:20px;color:#a8481f;margin-bottom:2px}
   .txt p{font-size:13px;color:#8a7360}
   .arrow{margin-left:auto;font-size:22px;color:#c85a35}
@@ -112,6 +121,18 @@
   var saved = null; try { saved = localStorage.getItem("cook46lang"); } catch(e){}
   var start = saved || ((navigator.language || "ru").slice(0,2) === "en" ? "en" : "ru");
   setLang(start);
+
+  // объёмный наклон карточек за курсором (только мышь, на телефоне не мешает)
+  document.querySelectorAll(".card").forEach(function (c) {
+    c.addEventListener("pointermove", function (e) {
+      if (e.pointerType !== "mouse") return;
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      c.style.transform = "perspective(800px) rotateY(" + (x * 6).toFixed(2) + "deg) rotateX(" + (-y * 6).toFixed(2) + "deg) translateY(-4px)";
+    });
+    c.addEventListener("pointerleave", function () { c.style.transform = ""; });
+  });
 </script>
 </body>
 </html>
